@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,130 +13,100 @@
         }
 
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-card: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent-blue: #2563eb;
-            --accent-green: #059669;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --border-color: #334155;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text-primary);
+            background: var(--bg-primary);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
-        header {
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.9);
         }
 
-        nav {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .logo {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--accent-blue);
         }
 
-        /* Hero Section */
         .hero {
-            padding: 80px 0 120px;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            position: relative;
-            overflow: hidden;
+            background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent);
-            pointer-events: none;
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .status-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-green);
+            font-weight: 600;
         }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
+        .status-badge::before {
+            content: "●";
+            margin-right: 0.5rem;
             animation: pulse 2s infinite;
         }
 
@@ -144,603 +115,883 @@
             50% { opacity: 0.5; }
         }
 
-        h1 {
-            font-size: 64px;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -0.02em;
         }
 
         .hero-subtitle {
-            font-size: 24px;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            font-weight: 500;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-highlight {
-            font-size: 18px;
-            color: var(--accent-blue);
+        .highlight {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
             font-weight: 600;
-            margin-bottom: 40px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .cta-button {
             display: inline-block;
             background: var(--accent-blue);
             color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
+            margin-top: 2.5rem;
             transition: all 0.3s;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
         }
 
         .cta-button:hover {
+            background: #2563eb;
             transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            background: #1d4ed8;
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
         }
 
-        /* Section Styles */
         section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            max-width: 700px;
+            padding: 6rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Bento Grid */
-        .bento-grid {
+        section:nth-child(even) {
+            background: #020617;
+            max-width: 100%;
+            padding-left: calc((100% - 1200px) / 2 + 2rem);
+            padding-right: calc((100% - 1200px) / 2 + 2rem);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .problem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 48px;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
 
-        .bento-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+        .problem-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
             border-radius: 16px;
-            padding: 32px;
+            border: 1px solid var(--border-color);
             transition: all 0.3s;
-            box-shadow: var(--shadow);
         }
 
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+        .problem-card:hover {
+            transform: translateY(-5px);
             border-color: var(--accent-blue);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: white;
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
 
-        .card-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .card-description {
+        .problem-card p {
             color: var(--text-secondary);
             line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
-        /* Process Steps */
-        .process-steps {
-            display: grid;
-            gap: 32px;
-        }
-
-        .step {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 24px;
-            align-items: start;
-        }
-
-        .step-number {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .step-content h3 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .step-content p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Comparison Table */
         .comparison-table {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .comparison-table table {
             width: 100%;
             border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
         .comparison-table th,
         .comparison-table td {
-            padding: 20px;
+            padding: 1.5rem;
             text-align: left;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .comparison-table th {
-            background: var(--bg-secondary);
+            background: #0f172a;
             font-weight: 700;
-            font-size: 18px;
+            color: var(--accent-blue);
         }
 
         .comparison-table tr:last-child td {
             border-bottom: none;
         }
 
-        .check {
+        .comparison-table .check {
             color: var(--accent-green);
-            font-weight: 700;
-            font-size: 20px;
+            font-weight: 600;
         }
 
-        .cross {
+        .comparison-table .cross {
             color: #ef4444;
-            font-weight: 700;
-            font-size: 20px;
+            font-weight: 600;
         }
 
-        /* Traction Section */
-        .traction-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .traction-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
+        .flow-diagram {
             text-align: center;
-            box-shadow: var(--shadow);
+            margin: 3rem 0;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .traction-value {
-            font-size: 48px;
+        .flow-box {
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent-blue);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .approach-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .approach-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--accent-blue);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .approach-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .approach-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .approach-card .subtitle {
+            font-weight: 600;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .step {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .step strong {
+            color: var(--text-primary);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .comparison-column {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-column h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-column ul {
+            list-style: none;
+        }
+
+        .comparison-column li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            background: #0f172a;
+            line-height: 1.6;
+        }
+
+        .comparison-column .is-item {
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .comparison-column .not-item {
+            border-left: 4px solid #ef4444;
+        }
+
+        .comparison-column strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .metric-value {
+            font-size: 3rem;
             font-weight: 800;
             color: var(--accent-blue);
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
 
-        .traction-label {
+        .metric-label {
             color: var(--text-secondary);
-            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* Footer */
-        footer {
-            background: var(--text-primary);
+        .metric-status {
+            display: inline-block;
+            background: var(--accent-green);
             color: white;
-            padding: 48px 0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .tech-stack {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tech-stack ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .tech-stack li {
+            padding: 1rem;
+            background: #0f172a;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .tech-stack strong {
+            color: var(--accent-blue);
+        }
+
+        .traction-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            line-height: 1.8;
+        }
+
+        .traction-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .traction-content strong {
+            color: var(--text-primary);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .team-card .role {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .contact-section {
+            background: radial-gradient(circle at bottom left, #064e3b, #0f172a);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item .icon {
+            font-size: 2.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-blue);
+        }
+
+        footer {
+            background: #020617;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
-            margin-bottom: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .footer-links {
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        footer p {
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+            color: var(--text-secondary);
+        }
+
+        footer .footer-team {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer .footer-contact {
             display: flex;
             justify-content: center;
-            gap: 32px;
-            margin-bottom: 24px;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+        footer .footer-contact a {
+            color: var(--accent-blue);
             text-decoration: none;
-            transition: color 0.2s;
+            font-weight: 600;
         }
 
-        .footer-links a:hover {
-            color: white;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .step {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo-container">
-                <img src="image.png" alt="OMNIX QUANTUM Logo" class="logo">
-                <span class="logo-text">OMNIX QUANTUM</span>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://cdn.abacus.ai/images/6ee0ec5b-a15d-42f3-96a3-a582e21dffd6.png" alt="OMNIX QUANTUM Logo">
+                <span>OMNIX QUANTUM</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#problem">Problem</a></li>
                 <li><a href="#solution">Solution</a></li>
-                <li><a href="#how">How It Works</a></li>
-                <li><a href="#traction">Traction</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#metrics">Metrics</a></li>
+                <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <div class="status-pill">
-                <span class="status-dot"></span>
-                Pre-Seed Stage | Abu Dhabi (ADGM)
-            </div>
-            <h1>
-                Institutional Risk Control<br>
-                <span class="gradient-text">Infrastructure for Algo Trading</span>
-            </h1>
-            <p class="hero-subtitle">
-                Fail-closed architecture that validates every trade before execution
-            </p>
-            <p class="hero-highlight">
-                Built for institutional capital, not retail trading.
-            </p>
-            <a href="mailto:contacto@omnixquantum.net" class="cta-button">Request Institutional Brief</a>
+        <div class="hero-container">
+            <div class="status-badge">Pre-Seed Stage | Abu Dhabi (ADGM)</div>
+            <h1>Institutional Risk Control<br>Infrastructure for Algo Trading</h1>
+            <p class="hero-subtitle">Governance-first architecture that validates every trade before execution</p>
+            <div class="highlight">Built for institutional capital, not retail trading.</div>
+            <a href="#contact" class="cta-button">Request Institutional Brief</a>
         </div>
     </section>
 
-    <!-- Problem Section -->
     <section id="problem">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">The Problem</h2>
-                <p class="section-subtitle">
-                    Institutional capital requires governance infrastructure, not just performance metrics
-                </p>
+        <h2>The Institutional Problem</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="icon">⚠️</div>
+                <h3>Regulatory Exposure</h3>
+                <p>Family Offices and Asset Managers face increasing scrutiny from regulators like ADGM, requiring demonstrable risk controls and audit trails for every algorithmic decision.</p>
+                <p>Without proper governance infrastructure, institutions risk regulatory penalties, loss of licenses, and reputational damage that can take years to recover from.</p>
             </div>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div class="card-icon">⚠️</div>
-                    <h3 class="card-title">No Pre-Trade Validation</h3>
-                    <p class="card-description">
-                        Most algo systems execute first, validate later. This creates unacceptable risk exposure for institutional portfolios.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Opaque Risk Models</h3>
-                    <p class="card-description">
-                        Black-box systems without explainable risk assessment fail regulatory and fiduciary standards.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">🔍</div>
-                    <h3 class="card-title">No Audit Trail</h3>
-                    <p class="card-description">
-                        Lack of comprehensive decision logs makes compliance reporting and risk attribution impossible.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">⚡</div>
-                    <h3 class="card-title">Regime Blindness</h3>
-                    <p class="card-description">
-                        Systems optimized for normal markets fail catastrophically during volatility spikes and regime changes.
-                    </p>
-                </div>
+            <div class="problem-card">
+                <div class="icon">💸</div>
+                <h3>Capital at Risk</h3>
+                <p>Retail-grade trading bots lack the multi-layer validation required for institutional capital. A single unvalidated trade can trigger cascading losses across portfolios.</p>
+                <p>Institutional clients manage portfolios worth millions to billions. They cannot afford systems that prioritize speed over safety, or profit signals over risk validation.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">🔍</div>
+                <h3>No Audit Trail</h3>
+                <p>Most algo trading systems operate as "black boxes" with no explainability. Institutions need full transparency: why each trade was approved or rejected, with timestamped evidence.</p>
+                <p>During audits or investigations, institutions must prove their systems acted responsibly. Without detailed logs and validation records, they have no defense.</p>
             </div>
         </div>
+
+        <h2>Why Retail Bots Fail Institutions</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Retail Bots</th>
+                    <th>OMNIX QUANTUM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pre-Trade Risk Validation</strong><br><small>Every trade must pass multiple risk checks before execution</small></td>
+                    <td class="cross">✗ Execute first, check later</td>
+                    <td class="check">✓ 6-tier veto + MC + RMS</td>
+                </tr>
+                <tr>
+                    <td><strong>Regulatory Audit Trail</strong><br><small>Complete timestamped logs of all decisions and validations</small></td>
+                    <td class="cross">✗ Minimal or no logging</td>
+                    <td class="check">✓ Full immutable audit log</td>
+                </tr>
+                <tr>
+                    <td><strong>Fail-Closed Architecture</strong><br><small>System defaults to blocking trades when uncertain or detecting anomalies</small></td>
+                    <td class="cross">✗ Fail-open (risky default)</td>
+                    <td class="check">✓ Blocks by default</td>
+                </tr>
+                <tr>
+                    <td><strong>Market Regime Detection</strong><br><small>Identifies when market conditions have fundamentally changed</small></td>
+                    <td class="cross">✗ Assumes stable conditions</td>
+                    <td class="check">✓ Real-time regime monitoring</td>
+                </tr>
+                <tr>
+                    <td><strong>Monte Carlo Risk Simulation</strong><br><small>Simulates thousands of scenarios to predict potential losses</small></td>
+                    <td class="cross">✗ No forward-looking risk</td>
+                    <td class="check">✓ Pre-trade simulation</td>
+                </tr>
+                <tr>
+                    <td><strong>Capital Preservation Focus</strong><br><small>Primary goal is protecting capital, not maximizing returns</small></td>
+                    <td class="cross">✗ Profit-first mentality</td>
+                    <td class="check">✓ Risk-first philosophy</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <!-- Why Retail Bots Fail -->
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why Retail Bots Fail Institutional Standards</h2>
-            </div>
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Requirement</th>
-                            <th>Retail Bots</th>
-                            <th>OMNIX QUANTUM</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Pre-Trade Risk Validation</strong></td>
-                            <td><span class="cross">✗</span> Execute first, check later</td>
-                            <td><span class="check">✓</span> Fail-closed architecture</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Regime Detection</strong></td>
-                            <td><span class="cross">✗</span> Static parameters</td>
-                            <td><span class="check">✓</span> Real-time market state analysis</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Explainable Risk Models</strong></td>
-                            <td><span class="cross">✗</span> Black-box ML</td>
-                            <td><span class="check">✓</span> Transparent validation layers</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Audit Trail</strong></td>
-                            <td><span class="cross">✗</span> Minimal logging</td>
-                            <td><span class="check">✓</span> Complete decision lineage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Capital Preservation Focus</strong></td>
-                            <td><span class="cross">✗</span> Profit-first optimization</td>
-                            <td><span class="check">✓</span> Risk-first philosophy</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
     <section id="solution">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">The OMNIX QUANTUM Approach</h2>
-                <p class="section-subtitle">
-                    Risk-first infrastructure that validates before execution
-                </p>
+        <h2>The OMNIX QUANTUM Approach</h2>
+
+        <div class="flow-diagram">
+            <div class="flow-box">External Signal<br><small>Quant models, analysts, providers</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">OMNIX Shield<br><small>4-layer validation pipeline</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">Safe Execution<br><small>Approved trades only</small></div>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="icon">🛡️</div>
+                <h3>Fail-Closed Architecture</h3>
+                <p class="subtitle">What it means:</p>
+                <p>OMNIX defaults to blocking trades unless they pass all validation layers. This is the opposite of retail systems that execute first and ask questions later.</p>
+                <p class="subtitle">Why it matters:</p>
+                <p>In uncertain or anomalous market conditions, the safest action is inaction. OMNIX protects capital by refusing to trade when conditions are unclear, preventing catastrophic losses from unexpected market events.</p>
             </div>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div class="card-icon">🛡️</div>
-                    <h3 class="card-title">Fail-Closed Architecture</h3>
-                    <p class="card-description">
-                        No trade executes without passing all validation layers. Default state is "blocked" until proven safe.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">🔬</div>
-                    <h3 class="card-title">Multi-Layer Validation</h3>
-                    <p class="card-description">
-                        Four independent validation gates: Regime Detection, Coherence Check, Monte Carlo Simulation, and Consensus Gate.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">📈</div>
-                    <h3 class="card-title">Regime-Aware Risk</h3>
-                    <p class="card-description">
-                        Real-time market state classification adjusts risk parameters dynamically based on volatility and correlation regimes.
-                    </p>
-                </div>
-                <div class="bento-card">
-                    <div class="card-icon">📋</div>
-                    <h3 class="card-title">Complete Auditability</h3>
-                    <p class="card-description">
-                        Every decision logged with full context: why a trade was approved or rejected, with timestamped evidence.
-                    </p>
-                </div>
+
+            <div class="approach-card">
+                <div class="icon">🎯</div>
+                <h3>Risk-First Philosophy</h3>
+                <p class="subtitle">What it means:</p>
+                <p>OMNIX is not designed to generate trading signals or maximize profits. It's infrastructure that validates whether external signals are safe to execute given current market conditions and portfolio risk.</p>
+                <p class="subtitle">Why it matters:</p>
+                <p>Institutions already have alpha sources (quant teams, signal providers). What they lack is a governance layer that ensures those signals won't blow up their portfolios. OMNIX fills that gap.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="icon">📊</div>
+                <h3>Multi-Layer Validation</h3>
+                <p class="subtitle">What it means:</p>
+                <p>Every trade passes through 4 independent validation layers before execution. Each layer can veto the trade independently.</p>
+                <p class="subtitle">Why it matters:</p>
+                <p>Single-point validation can fail. By requiring consensus across multiple independent checks (regime, coherence, Monte Carlo, final gate), OMNIX dramatically reduces the probability of executing a dangerous trade.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="icon">🦢</div>
+                <h3>Black Swan Detection</h3>
+                <p class="subtitle">What it means:</p>
+                <p>Real-time monitoring for extreme market anomalies — flash crashes, liquidity crises, and correlation breakdowns that precede market chaos.</p>
+                <p class="subtitle">Why it matters:</p>
+                <p>Traditional systems detect problems after the damage is done. OMNIX identifies Black Swan precursors and triggers automatic defensive positioning before cascade losses occur. This is the difference between losing 2% and losing 40%.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="icon">👻</div>
+                <h3>Shadow Portfolio (Counterfactual Analysis)</h3>
+                <p class="subtitle">What it means:</p>
+                <p>Every trade that OMNIX vetoes is tracked in a "shadow portfolio" that shows what would have happened if the trade had been executed.</p>
+                <p class="subtitle">Why it matters:</p>
+                <p>Proves the system works. Investors and regulators can see auditable evidence that blocked trades would have resulted in losses. This transforms "we protected you" from a claim into verifiable data.</p>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How OMNIX QUANTUM Works</h2>
-                <p class="section-subtitle">
-                    Four validation layers before any trade execution
-                </p>
+    <section id="how-it-works">
+        <h2>How OMNIX QUANTUM Works</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.125rem; color: var(--text-secondary);">OMNIX sits between your signal generation (quant models, analysts, third-party providers) and trade execution. Every proposed trade must pass through our 4-layer validation pipeline.</p>
+
+        <div class="process-steps">
+            <div class="step">
+                <h3>Layer 1: Regime Detection</h3>
+                <p><strong>Purpose:</strong> Identify if the market is in a fundamentally different state than when your strategy was designed.</p>
+                <p><strong>How it works:</strong> Analyzes volatility patterns, correlation structures, and liquidity conditions. If current regime doesn't match historical training data, the trade is flagged.</p>
+                <p><strong>Result:</strong> Prevents strategies from trading in conditions they weren't designed for.</p>
             </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Regime Detection Layer</h3>
-                        <p>
-                            Classifies current market state (normal, volatile, crisis) using volatility clustering, correlation breakdown, and liquidity metrics. Adjusts risk thresholds accordingly.
-                        </p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Coherence & Edge Validation</h3>
-                        <p>
-                            Verifies signal quality and statistical edge. Checks for data integrity, model drift, and minimum confidence thresholds before proceeding.
-                        </p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Monte Carlo Risk Simulation</h3>
-                        <p>
-                            Runs 10,000+ scenarios to estimate portfolio impact, tail risk, and drawdown probability. Trade rejected if risk exceeds institutional limits.
-                        </p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Consensus Gate</h3>
-                        <p>
-                            Final approval requires unanimous pass from all layers. Any single rejection blocks execution. Full audit log generated for compliance.
-                        </p>
-                    </div>
-                </div>
+
+            <div class="step">
+                <h3>Layer 2: Coherence & Edge Validation</h3>
+                <p><strong>Purpose:</strong> Verify that the proposed trade makes sense given current market microstructure and your strategy's historical edge.</p>
+                <p><strong>How it works:</strong> Checks if the signal aligns with your strategy's known patterns, if market liquidity supports the trade size, and if execution costs won't erode expected returns.</p>
+                <p><strong>Result:</strong> Blocks trades that look profitable on paper but will fail in real execution.</p>
+            </div>
+
+            <div class="step">
+                <h3>Layer 3: Monte Carlo Risk Simulation</h3>
+                <p><strong>Purpose:</strong> Simulate thousands of potential outcomes to understand tail risk and maximum drawdown scenarios.</p>
+                <p><strong>How it works:</strong> Runs 10,000+ simulations of the proposed trade under different market scenarios, calculating Value-at-Risk (VaR) and Conditional VaR (CVaR). If worst-case scenarios exceed risk limits, trade is rejected.</p>
+                <p><strong>Result:</strong> Protects against low-probability, high-impact losses that can destroy portfolios.</p>
+            </div>
+
+            <div class="step">
+                <h3>Layer 4: Consensus Gate</h3>
+                <p><strong>Purpose:</strong> Final decision point that requires all previous layers to approve before execution.</p>
+                <p><strong>How it works:</strong> Aggregates signals from Layers 1-3. Only if all layers give green light does the trade proceed. Any single red flag blocks execution and logs the reason.</p>
+                <p><strong>Result:</strong> Creates an immutable audit trail showing exactly why each trade was approved or rejected.</p>
             </div>
         </div>
     </section>
 
-    <!-- What OMNIX Is/Is Not -->
     <section>
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What OMNIX QUANTUM Is (and Is Not)</h2>
+        <h2>What OMNIX QUANTUM Is (and Is Not)</h2>
+        <div class="comparison-grid">
+            <div class="comparison-column">
+                <h3 style="color: var(--accent-green);">✓ OMNIX QUANTUM IS</h3>
+                <ul>
+                    <li class="is-item">
+                        <strong>✓ IS: Risk Governance Infrastructure</strong>
+                        A validation layer that sits between your signal generation and execution, ensuring every trade meets institutional risk standards before it reaches the market.
+                    </li>
+                    <li class="is-item">
+                        <strong>✓ IS: Regulatory Compliance Tool</strong>
+                        Provides the audit trails, risk documentation, and explainability that regulators like ADGM require from institutional algo trading operations.
+                    </li>
+                    <li class="is-item">
+                        <strong>✓ IS: Capital Preservation System</strong>
+                        Designed to prevent catastrophic losses by blocking trades in uncertain conditions, even if it means missing some profitable opportunities.
+                    </li>
+                </ul>
             </div>
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>OMNIX QUANTUM Is</th>
-                            <th>OMNIX QUANTUM Is NOT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="check">✓</span> Risk control infrastructure</td>
-                            <td><span class="cross">✗</span> A signal generation platform</td>
-                        </tr>
-                        <tr>
-                            <td><span class="check">✓</span> Pre-trade validation system</td>
-                            <td><span class="cross">✗</span> A backtesting tool</td>
-                        </tr>
-                        <tr>
-                            <td><span class="check">✓</span> Institutional governance layer</td>
-                            <td><span class="cross">✗</span> A retail trading bot</td>
-                        </tr>
-                        <tr>
-                            <td><span class="check">✓</span> Fail-closed architecture</td>
-                            <td><span class="cross">✗</span> A performance optimizer</td>
-                        </tr>
-                        <tr>
-                            <td><span class="check">✓</span> Audit and compliance tool</td>
-                            <td><span class="cross">✗</span> A black-box AI system</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Traction Section -->
-    <section id="traction" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Traction & Status</h2>
-                <p class="section-subtitle">
-                    Focus: risk governance validation before profit optimization.
-                </p>
-            </div>
-            <div class="traction-grid">
-                <div class="traction-card">
-                    <div class="traction-value">Pre-Seed</div>
-                    <div class="traction-label">Current Stage</div>
-                </div>
-                <div class="traction-card">
-                    <div class="traction-value">ADGM</div>
-                    <div class="traction-label">Location (Abu Dhabi)</div>
-                </div>
-                <div class="traction-card">
-                    <div class="traction-value">4-Layer</div>
-                    <div class="traction-label">Validation Architecture</div>
-                </div>
-                <div class="traction-card">
-                    <div class="traction-value">100%</div>
-                    <div class="traction-label">Fail-Closed Design</div>
-                </div>
+            <div class="comparison-column">
+                <h3 style="color: #ef4444;">✗ OMNIX QUANTUM IS NOT</h3>
+                <ul>
+                    <li class="not-item">
+                        <strong>✗ NOT: A Trading Signal Generator</strong>
+                        OMNIX does not create alpha or generate trade ideas. It validates signals from your existing quant teams, analysts, or third-party providers.
+                    </li>
+                    <li class="not-item">
+                        <strong>✗ NOT: A Retail Trading Bot</strong>
+                        Not designed for individual traders or small accounts. Built specifically for institutional capital with regulatory obligations and fiduciary duties.
+                    </li>
+                    <li class="not-item">
+                        <strong>✗ NOT: A Profit Maximization Tool</strong>
+                        OMNIX will reject profitable trades if they violate risk limits. The goal is long-term capital preservation, not short-term return optimization.
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section id="contact">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">Ready to Validate Your Algo Infrastructure?</h2>
-            <p class="section-subtitle" style="margin-bottom: 40px;">
-                Request an institutional brief and technical architecture overview
-            </p>
-            <a href="mailto:contacto@omnixquantum.net" class="cta-button">Request Institutional Brief</a>
+    <section id="metrics">
+        <h2>Real Performance Metrics</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">OMNIX QUANTUM is currently in its Official Track Record phase (Day 11/30), following a Learning Baseline period. These are real numbers from production systems running 24/7 on Railway infrastructure.</p>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">175,192+</div>
+                <div class="metric-label">Evaluation Cycles</div>
+                <div class="metric-status">LIVE</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">5,473</div>
+                <div class="metric-label">Vetos Executed</div>
+                <div class="metric-status">VERIFIED</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">119</div>
+                <div class="metric-label">Trades Executed (Learning Baseline)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">98.5%</div>
+                <div class="metric-label">Capital Preserved ($984,801 of $1M)</div>
+                <div class="metric-status">VERIFIED</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">24/7</div>
+                <div class="metric-label">System Uptime</div>
+                <div class="metric-status">LIVE</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">6-Tier</div>
+                <div class="metric-label">Veto + MC + RMS Validations</div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 4rem;">Technology Stack</h2>
+        <div class="tech-stack">
+            <ul>
+                <li><strong>Backend:</strong> Python 3.11, Flask</li>
+                <li><strong>Database:</strong> PostgreSQL (Railway)</li>
+                <li><strong>Cache:</strong> Redis (Railway)</li>
+                <li><strong>Exchange:</strong> Kraken API (integrated)</li>
+                <li><strong>AI:</strong> Google Gemini 2.0, OpenAI GPT-4o, Anthropic Claude</li>
+                <li><strong>Security:</strong> Post-Quantum Crypto (Kyber-768, Dilithium-3)</li>
+                <li><strong>Certifications:</strong> NIST FIPS 203/204 compliance</li>
+                <li><strong>Sharia Compliance:</strong> Designed in accordance with Islamic finance principles — no leverage, no interest-bearing instruments, and fully auditable decision logic to meet ethical trading standards.</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="traction">
+        <h2>Traction & Investment Opportunity</h2>
+        <div class="traction-content">
+            <p><strong>Stage:</strong> Pre-Seed | Seeking $500K for 10% equity ($5M pre-money valuation)</p>
+            <p><strong>Location:</strong> Abu Dhabi Global Market (ADGM) - operating within a leading financial free zone with robust regulatory framework</p>
+            <p><strong>Founded:</strong> June 2025</p>
+            <p><strong>Current Status:</strong> Pre-revenue (demo/sales stage) with production-ready infrastructure</p>
+            <p><strong>Target Clients:</strong> Family Offices, Asset Managers, Institutional Desks managing $10M+ in algorithmic trading capital</p>
+            <p><strong>Focus:</strong> Risk governance validation before profit optimization - ensuring every client can demonstrate regulatory compliance and fiduciary responsibility</p>
+            <p><strong>Track Record:</strong> Learning Baseline completed (Nov 2025 - Jan 14, 2026: 119 trades, -$15K). Note: Calibration phase to tune risk parameters. System now operates with optimized thresholds.</p>
+            <p><strong>Official Track Record:</strong> In progress (Day 11/30, target: 100 trades, >45% win rate)</p>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2>Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <h3>Harold Nunes</h3>
+                <p class="role">Founder & CEO</p>
+            </div>
+            <div class="team-card">
+                <h3>David Guzmán</h3>
+                <p class="role">Lead Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Ready to Validate Your Algo Trading Infrastructure?</h2>
+        <p>OMNIX QUANTUM is purpose-built for institutions that need to demonstrate risk governance and regulatory compliance. If you manage institutional capital through algorithmic strategies, let's discuss how OMNIX can protect your operations.</p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="icon">✉️</div>
+                <a href="mailto:contacto@omnixquantum.net">contacto@omnixquantum.net</a>
+            </div>
+            <div class="contact-item">
+                <div class="icon">📱</div>
+                <a href="tel:+16505078293">+1 (650) 507-8293</a>
+            </div>
+        </div>
+
+        <a href="mailto:contacto@omnixquantum.net" class="cta-button" style="margin-top: 2rem;">Request Institutional Brief</a>
+    </section>
+
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3 style="margin-bottom: 16px;">OMNIX QUANTUM</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 24px;">
-                    Institutional Risk Control Infrastructure for Algorithmic Trading
-                </p>
-                <div class="footer-links">
-                    <a href="mailto:contacto@omnixquantum.net">contacto@omnixquantum.net</a>
-                    <a href="tel:+16505078293">+1 (650) 507-8293</a>
-                </div>
-                <p style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">
-                    Founder: Harold Nunes | Abu Dhabi (ADGM)
-                </p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://cdn.abacus.ai/images/6ee0ec5b-a15d-42f3-96a3-a582e21dffd6.png" alt="OMNIX QUANTUM">
+                <span>OMNIX QUANTUM</span>
             </div>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Institutional Risk Control Infrastructure for Algorithmic Trading</p>
+
+            <div class="footer-team">
+                <p><strong>Harold Nunes</strong> — Founder & CEO</p>
+                <p><strong>David Guzmán</strong> — Lead Developer</p>
+            </div>
+
+            <div class="footer-contact">
+                <a href="mailto:contacto@omnixquantum.net">contacto@omnixquantum.net</a>
+                <span style="color: var(--border-color);">|</span>
+                <a href="tel:+16505078293">+1 (650) 507-8293</a>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 0.875rem;">Founded: June 2025 | Abu Dhabi Global Market (ADGM)</p>
+            <p style="font-size: 0.75rem; margin-top: 1rem;">© 2025 OMNIX QUANTUM. All rights reserved.</p>
         </div>
     </footer>
 </body>
