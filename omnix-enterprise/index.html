@@ -38,17 +38,13 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #030712;
+            color: #f1f5f9;
         }
 
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .dark .glass {
-            background: rgba(3, 7, 18, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -102,14 +98,14 @@
 
     </style>
 </head>
-<body class="dark bg-white dark:bg-dark text-slate-900 dark:text-slate-100">
+<body class="bg-dark text-slate-100">
 
     <!-- Blobs de fondo -->
     <div class="hero-blob top-0 left-0"></div>
     <div class="hero-blob bottom-0 right-0" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);"></div>
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+    <nav class="fixed w-full z-50 glass border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-black tracking-tighter gradient-text">OMNIX</div>
 
@@ -120,10 +116,6 @@
                 <a href="#arquitectura" class="nav-link">Arquitectura</a>
                 <a href="#planes" class="nav-link">Planes</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
-
-                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-indigo-500 transition-all">
-                    <i id="theme-icon" class="fas fa-moon"></i>
-                </button>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -133,7 +125,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-4">
+        <div id="mobile-menu" class="hidden md:hidden bg-dark border-b border-slate-800 px-6 py-6 space-y-4">
             <a href="#inicio" class="block font-bold">Inicio</a>
             <a href="#solucion" class="block font-bold">Solución</a>
             <a href="#arquitectura" class="block font-bold">Arquitectura</a>
@@ -153,17 +145,17 @@
                     Automatiza tu <br />
                     <span class="gradient-text">E-commerce</span> con IA
                 </h1>
-                <p class="text-xl font-medium text-indigo-500 dark:text-indigo-400 mb-4">
+                <p class="text-xl font-medium text-indigo-400 mb-4">
                     Reduce soporte, vende 24/7 y deja que la IA haga el trabajo repetitivo por ti.
                 </p>
-                <p class="text-lg text-slate-500 dark:text-slate-400 mb-10 max-w-xl leading-relaxed">
+                <p class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">
                     <strong>OMNIX no es un bot.</strong> Es un sistema operativo de automatización comercial que orquesta WhatsApp, correo y e-commerce en un solo flujo inteligente.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#contacto" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-500/25">
                         Solicitar diagnóstico gratuito
                     </a>
-                    <a href="#solucion" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-slate-100 dark:hover:bg-white/5 transition-all">
+                    <a href="#solucion" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/5 transition-all">
                         Ver Demo
                     </a>
                 </div>
@@ -193,7 +185,7 @@
     <section class="py-16 px-6">
         <div class="max-w-4xl mx-auto glass p-8 rounded-3xl border-l-4 border-indigo-500" data-aos="fade-up">
             <h3 class="text-2xl font-bold mb-4">Ejemplo Real (Caso Típico)</h3>
-            <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+            <p class="text-slate-400 leading-relaxed mb-6">
                 Un e-commerce con más de 300 mensajes diarios automatizó el 100% de sus consultas de stock, ventas y reportes.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -211,11 +203,11 @@
     </section>
 
     <!-- Benefits Grid -->
-    <section id="solucion" class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
+    <section id="solucion" class="py-24 px-6 bg-slate-900/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Beneficios de Negocio</h2>
-                <p class="text-slate-500 dark:text-slate-400">Menos mensajes manuales. Menos errores humanos. Más ventas directas.</p>
+                <p class="text-slate-400">Menos mensajes manuales. Menos errores humanos. Más ventas directas.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -224,7 +216,7 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Venta Autónoma</h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         La IA consulta stock real, responde al cliente y cierra ventas sin intervención humana enviando links de pago.
                     </p>
                 </div>
@@ -233,7 +225,7 @@
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Reportes en Segundos</h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         Solicita un informe por WhatsApp y recíbelo en PDF por correo o Google Drive de forma instantánea.
                     </p>
                 </div>
@@ -242,7 +234,7 @@
                         <i class="fas fa-sync"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Sincronización Total</h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         Datos siempre actualizados en Supabase y PostgreSQL, eliminando reprocesos manuales y errores de data.
                     </p>
                 </div>
@@ -298,7 +290,7 @@
             <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Planes de Implementación</h2>
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Starter -->
-                <div class="glass p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up">
+                <div class="glass p-8 rounded-3xl border border-slate-800" data-aos="fade-up">
                     <h3 class="text-xl font-bold mb-4">Starter Automation</h3>
                     <p class="text-slate-500 mb-6 text-sm">Para negocios que quieren automatizar WhatsApp.</p>
                     <div class="mb-6">
@@ -309,7 +301,7 @@
                         <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
                         <p class="text-xl font-black">COP 800.000 / mes</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                    <ul class="space-y-3 text-sm text-slate-400 mb-8">
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + PrestaShop</li>
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> Flujos base</li>
                     </ul>
@@ -328,7 +320,7 @@
                         <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
                         <p class="text-xl font-black">COP 2.500.000 / mes</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                    <ul class="space-y-3 text-sm text-slate-400 mb-8">
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + Gmail</li>
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> Reportes automáticos</li>
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> Google Drive</li>
@@ -337,7 +329,7 @@
                     <a href="#contacto" class="block text-center py-4 rounded-xl bg-indigo-500 text-white font-bold hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/25">Agendar llamada</a>
                 </div>
                 <!-- Enterprise -->
-                <div class="glass p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass p-8 rounded-3xl border border-slate-800" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-xl font-bold mb-4">Enterprise Automation</h3>
                     <p class="text-slate-500 mb-6 text-sm">Infraestructura a medida.</p>
                     <div class="mb-6">
@@ -348,7 +340,7 @@
                         <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
                         <p class="text-xl font-black">Según uso</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                    <ul class="space-y-3 text-sm text-slate-400 mb-8">
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> Integraciones custom</li>
                         <li><i class="fas fa-check text-indigo-500 mr-2"></i> SLA + soporte 24/7</li>
                     </ul>
@@ -363,21 +355,21 @@
         <div class="max-w-4xl mx-auto glass p-10 md:p-16 rounded-[40px] shadow-2xl" data-aos="fade-up">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4">Hablemos de tu Proyecto</h2>
-                <p class="text-slate-500 dark:text-slate-400">Cuéntanos cómo atiendes hoy a tus clientes y te diremos exactamente qué automatizar.</p>
+                <p class="text-slate-400">Cuéntanos cómo atiendes hoy a tus clientes y te diremos exactamente qué automatizar.</p>
             </div>
 
             <form id="contact-form" class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2">
                     <label class="text-sm font-bold ml-2">Nombre</label>
-                    <input type="text" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Tu nombre">
+                    <input type="text" required class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Tu nombre">
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-bold ml-2">Email corporativo</label>
-                    <input type="email" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="email@empresa.com">
+                    <input type="email" required class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="email@empresa.com">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-sm font-bold ml-2">Mensaje</label>
-                    <textarea rows="4" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Cuéntanos sobre tus necesidades..."></textarea>
+                    <textarea rows="4" required class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Cuéntanos sobre tus necesidades..."></textarea>
                 </div>
                 <div class="md:col-span-2">
                     <button type="submit" class="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold text-lg transition-all shadow-xl shadow-indigo-500/20">
@@ -389,11 +381,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 px-6 border-t border-slate-200 dark:border-slate-800">
+    <footer class="py-20 px-6 border-t border-slate-800">
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
             <div class="col-span-2">
                 <div class="text-3xl font-black gradient-text mb-6">OMNIX</div>
-                <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-8">
+                <p class="text-slate-400 max-w-sm mb-8">
                     Sistema operativo de automatización comercial con IA.
                 </p>
                 <div class="flex space-x-4">
@@ -407,17 +399,17 @@
             </div>
             <div>
                 <h4 class="font-bold mb-6">Contacto Directo</h4>
-                <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                <ul class="space-y-4 text-sm text-slate-400">
                     <li><i class="fas fa-phone mr-2"></i> +1 650 481 5494</li>
                     <li><i class="fas fa-envelope mr-2"></i> madridpep3@gmail.com</li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold mb-6">Ubicación</h4>
-                <p class="text-sm text-slate-500 dark:text-slate-400">Barranquilla, Colombia</p>
+                <p class="text-sm text-slate-400">Barranquilla, Colombia</p>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
             © 2024 OMNIX AI. Todos los derechos reservados.
         </div>
     </footer>
@@ -426,20 +418,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
-
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        themeToggle.addEventListener('click', () => {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                html.classList.add('dark');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
-        });
 
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
