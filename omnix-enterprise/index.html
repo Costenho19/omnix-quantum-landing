@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="OMNIX - Sistema operativo de automatización comercial con IA para E-commerce en Colombia." />
+    <title>OMNIX | Automatización Comercial con IA Enterprise</title>
+
+    <!-- Scripts Externos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f5f7ff', 100: '#ebf0fe', 200: '#ced9fd', 300: '#b1c2fb', 400: '#7695f8', 500: '#3b68f5', 600: '#355ddd', 700: '#2c4eb8', 800: '#233e93', 900: '#1d3378' },
+                        dark: '#030712',
+                        n8n: '#ff7f50',
+                        openai: '#10b981',
+                        google: '#4285f4',
+                        prestashop: '#ff6600',
+                        supabase: '#3ecf8e'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .glass {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 50px); }
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #6366f1;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Ecosystem Colors */
+        .icon-n8n { color: #ff7f50; }
+        .icon-openai { color: #10b981; }
+        .icon-google { color: #4285f4; }
+        .icon-prestashop { color: #ff6600; }
+        .icon-supabase { color: #3ecf8e; }
+
+    </style>
+</head>
+<body class="dark bg-white dark:bg-dark text-slate-900 dark:text-slate-100">
+
+    <!-- Blobs de fondo -->
+    <div class="hero-blob top-0 left-0"></div>
+    <div class="hero-blob bottom-0 right-0" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);"></div>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter gradient-text">OMNIX</div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#solucion" class="nav-link">Solución</a>
+                <a href="#arquitectura" class="nav-link">Arquitectura</a>
+                <a href="#planes" class="nav-link">Planes</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+
+                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-indigo-500 transition-all">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-4">
+            <a href="#inicio" class="block font-bold">Inicio</a>
+            <a href="#solucion" class="block font-bold">Solución</a>
+            <a href="#arquitectura" class="block font-bold">Arquitectura</a>
+            <a href="#planes" class="block font-bold">Planes</a>
+            <a href="#contacto" class="block font-bold">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 text-indigo-500 text-xs font-bold uppercase tracking-widest mb-6">
+                    n8n + GPT-4 Enterprise Automation
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+                    Automatiza tu <br />
+                    <span class="gradient-text">E-commerce</span> con IA
+                </h1>
+                <p class="text-xl font-medium text-indigo-500 dark:text-indigo-400 mb-4">
+                    Reduce soporte, vende 24/7 y deja que la IA haga el trabajo repetitivo por ti.
+                </p>
+                <p class="text-lg text-slate-500 dark:text-slate-400 mb-10 max-w-xl leading-relaxed">
+                    <strong>OMNIX no es un bot.</strong> Es un sistema operativo de automatización comercial que orquesta WhatsApp, correo y e-commerce en un solo flujo inteligente.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contacto" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-500/25">
+                        Solicitar diagnóstico gratuito
+                    </a>
+                    <a href="#solucion" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-slate-100 dark:hover:bg-white/5 transition-all">
+                        Ver Demo
+                    </a>
+                </div>
+            </div>
+            <div class="relative" data-aos="zoom-in">
+                <div class="glass rounded-3xl p-4 shadow-2xl border-indigo-500/20">
+                    <img src="https://placehold.co/600x400/1e1b4b/ffffff?text=Omnix+Workflow+Dashboard" alt="Dashboard" class="rounded-2xl w-full" />
+                </div>
+                <!-- Floating Badge -->
+                <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-xl animate-bounce">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-500">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400">Automatización Real</p>
+                            <p class="text-xl font-black">+90%</p>
+                            <p class="text-[10px] text-slate-500">En atención y reportes repetitivos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-4xl mx-auto glass p-8 rounded-3xl border-l-4 border-indigo-500" data-aos="fade-up">
+            <h3 class="text-2xl font-bold mb-4">Ejemplo Real (Caso Típico)</h3>
+            <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                Un e-commerce con más de 300 mensajes diarios automatizó el 100% de sus consultas de stock, ventas y reportes.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex items-center gap-2 text-sm font-bold text-indigo-500">
+                    <i class="fas fa-user-minus"></i> 0 contrataciones adicionales
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-indigo-500">
+                    <i class="fas fa-clock"></i> Atención inmediata 24/7
+                </div>
+                <div class="flex items-center gap-2 text-sm font-bold text-indigo-500">
+                    <i class="fas fa-chart-line"></i> +35% en conversión
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section id="solucion" class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Beneficios de Negocio</h2>
+                <p class="text-slate-500 dark:text-slate-400">Menos mensajes manuales. Menos errores humanos. Más ventas directas.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl hover:border-indigo-500/50 transition-all group" data-aos="fade-up">
+                    <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-2xl text-indigo-500 mb-6">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Venta Autónoma</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        La IA consulta stock real, responde al cliente y cierra ventas sin intervención humana enviando links de pago.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:border-purple-500/50 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-2xl text-purple-500 mb-6">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Reportes en Segundos</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Solicita un informe por WhatsApp y recíbelo en PDF por correo o Google Drive de forma instantánea.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:border-cyan-500/50 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-2xl text-cyan-500 mb-6">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sincronización Total</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Datos siempre actualizados en Supabase y PostgreSQL, eliminando reprocesos manuales y errores de data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tecnologia" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-16" data-aos="fade-up">Ecosistema de Integración</h2>
+            <div class="flex flex-wrap justify-center gap-12 mb-16">
+                <div class="flex flex-col items-center gap-2" data-aos="zoom-in">
+                    <i class="fas fa-code-branch text-5xl icon-n8n"></i>
+                    <span class="text-sm font-bold">n8n</span>
+                </div>
+                <div class="flex flex-col items-center gap-2" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-robot text-5xl icon-openai"></i>
+                    <span class="text-sm font-bold">GPT-4</span>
+                </div>
+                <div class="flex flex-col items-center gap-2" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-shopping-bag text-5xl icon-prestashop"></i>
+                    <span class="text-sm font-bold">PrestaShop</span>
+                </div>
+                <div class="flex flex-col items-center gap-2" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-google text-5xl icon-google"></i>
+                    <span class="text-sm font-bold">Workspace</span>
+                </div>
+                <div class="flex flex-col items-center gap-2" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-server text-5xl icon-supabase"></i>
+                    <span class="text-sm font-bold">Supabase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="arquitectura" class="py-24 px-6 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Infraestructura de Nivel Profesional</h2>
+            <p class="text-slate-400 mb-12 leading-relaxed" data-aos="fade-up">
+                OMNIX funciona como infraestructura, no como un bot aislado. Cada mensaje se valida, procesa y ejecuta dentro de flujos automatizados y seguros.
+            </p>
+            <a href="#contacto" class="inline-block px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold hover:bg-slate-200 transition-all">
+                Ver arquitectura técnica completa – PDF
+            </a>
+        </div>
+    </section>
+
+    <!-- Planes Section -->
+    <section id="planes" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Planes de Implementación</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div class="glass p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-4">Starter Automation</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Para negocios que quieren automatizar WhatsApp.</p>
+                    <div class="mb-6">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Setup inicial</p>
+                        <p class="text-xl font-black">Desde COP 3.000.000</p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
+                        <p class="text-xl font-black">COP 800.000 / mes</p>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + PrestaShop</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Flujos base</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-xl border border-indigo-500 text-indigo-500 font-bold hover:bg-indigo-500 hover:text-white transition-all">Solicitar evaluación</a>
+                </div>
+                <!-- Pro -->
+                <div class="glass p-8 rounded-3xl border-2 border-indigo-500 relative" data-aos="fade-up" data-aos-delay="100">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-500 text-white px-4 py-1 rounded-full text-xs font-bold">RECOMENDADO</span>
+                    <h3 class="text-xl font-bold mb-4">Professional Automation</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Para alto volumen de mensajes.</p>
+                    <div class="mb-6">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Setup inicial</p>
+                        <p class="text-xl font-black">Desde COP 8.000.000</p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
+                        <p class="text-xl font-black">COP 2.500.000 / mes</p>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + Gmail</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Reportes automáticos</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Google Drive</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-xl bg-indigo-500 text-white font-bold hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/25">Agendar llamada</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="glass p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold mb-4">Enterprise Automation</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Infraestructura a medida.</p>
+                    <div class="mb-6">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Setup inicial</p>
+                        <p class="text-xl font-black">Personalizado</p>
+                    </div>
+                    <div class="mb-8">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Operación mensual</p>
+                        <p class="text-xl font-black">Según uso</p>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-8">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Integraciones custom</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> SLA + soporte 24/7</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-xl border border-slate-500 text-slate-500 font-bold hover:bg-slate-500 hover:text-white transition-all">Contactar ventas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto glass p-10 md:p-16 rounded-[40px] shadow-2xl" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Hablemos de tu Proyecto</h2>
+                <p class="text-slate-500 dark:text-slate-400">Cuéntanos cómo atiendes hoy a tus clientes y te diremos exactamente qué automatizar.</p>
+            </div>
+
+            <form id="contact-form" class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="text-sm font-bold ml-2">Nombre</label>
+                    <input type="text" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Tu nombre">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-bold ml-2">Email corporativo</label>
+                    <input type="email" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="email@empresa.com">
+                </div>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-sm font-bold ml-2">Mensaje</label>
+                    <textarea rows="4" required class="w-full px-6 py-4 rounded-2xl bg-slate-100 dark:bg-white/5 border border-transparent focus:border-indigo-500 outline-none transition-all" placeholder="Cuéntanos sobre tus necesidades..."></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold text-lg transition-all shadow-xl shadow-indigo-500/20">
+                        Enviar solicitud <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="text-3xl font-black gradient-text mb-6">OMNIX</div>
+                <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-8">
+                    Sistema operativo de automatización comercial con IA.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://wa.me/16504815494" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:text-green-500 transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:madridpep3@gmail.com" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:text-indigo-500 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Contacto Directo</h4>
+                <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                    <li><i class="fas fa-phone mr-2"></i> +1 650 481 5494</li>
+                    <li><i class="fas fa-envelope mr-2"></i> madridpep3@gmail.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Ubicación</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Barranquilla, Colombia</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+            © 2024 OMNIX AI. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias! Tu solicitud ha sido enviada correctamente.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
