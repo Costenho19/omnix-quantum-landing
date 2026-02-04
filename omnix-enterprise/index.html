@@ -1,387 +1,1085 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>OMNIX Enterprise | Automatización Empresarial con IA</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OMNIX Enterprise | Automatización Operativa con IA</title>
+  <meta name="description" content="OMNIX Enterprise automatiza WhatsApp, ventas, correo y reportes con IA y n8n. No es un bot: es tu cerebro comercial." />
 
-<style>
-:root{
-  --bg:#050812;
-  --card:#0e1430;
-  --accent:#00e0ff;
-  --accent2:#5cff7a;
-  --text:#eaeaea;
-  --muted:#9aa3b2;
-}
+  <style>
+    :root{
+      --bg:#070A12;
+      --bg2:#0B1020;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.10);
+      --text:#EAF0FF;
+      --muted:#A9B4D0;
+      --accent:#00E0FF;
+      --accent2:#5CFF7A;
+      --warn:#FFCC66;
+      --danger:#FF5C7A;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+      --radius2: 30px;
+    }
 
-*{box-sizing:border-box}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 18% 10%, rgba(0,224,255,.14), transparent 60%),
+        radial-gradient(900px 500px at 80% 18%, rgba(92,255,122,.10), transparent 60%),
+        radial-gradient(700px 450px at 55% 90%, rgba(0,119,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.55;
+      overflow-x:hidden;
+    }
 
-body{
-  margin:0;
-  font-family:Inter,Arial,sans-serif;
-  background:radial-gradient(circle at top, #10172a, #050812 65%);
-  color:var(--text);
-}
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1180px, calc(100% - 40px)); margin:0 auto; }
 
-a{text-decoration:none;color:inherit}
+    /* Top Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.65);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 220px;
+    }
+    .brand img{
+      height:38px; width:auto;
+      border-radius:10px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+    }
+    .brand .title{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand .title strong{ font-size:14px; letter-spacing:.4px; }
+    .brand .title span{ font-size:12px; color:var(--muted); }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:10;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 40px;
-  background:rgba(5,8,18,.85);
-  backdrop-filter:blur(10px);
-}
+    .nav-links{
+      display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+      justify-content:center;
+    }
+    .nav-links a{
+      font-size:14px; color:rgba(234,240,255,.86);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
 
-header img{height:48px}
+    .nav-cta{
+      display:flex; align-items:center; gap:10px;
+      min-width: 220px;
+      justify-content:flex-end;
+    }
 
-header nav a{
-  margin-left:24px;
-  color:#cfd6e0;
-  font-weight:500;
-}
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      transition: transform .12s ease, filter .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .btn:active{ transform: translateY(0px); }
 
-.hero{
-  text-align:center;
-  padding:120px 30px 100px;
-}
+    .btn-primary{
+      background: linear-gradient(135deg, var(--accent), #2E7BFF);
+      color:#061018;
+      border-color: rgba(0,224,255,.35);
+      box-shadow: 0 18px 50px rgba(0,224,255,.14);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+      color: rgba(234,240,255,.92);
+      border-color: rgba(255,255,255,.12);
+    }
+    .btn-whatsapp{
+      background: linear-gradient(135deg, #25D366, #2BBE5E);
+      color:#04110A;
+      border-color: rgba(37,211,102,.45);
+      box-shadow: 0 18px 50px rgba(37,211,102,.12);
+    }
 
-.hero h1{
-  font-size:52px;
-  margin-bottom:20px;
-}
+    /* Hero */
+    .hero{
+      padding: 54px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav-cta{ display:none; }
+      .brand{ min-width: unset; }
+    }
 
-.hero p{
-  max-width:900px;
-  margin:auto;
-  font-size:20px;
-  color:#cfd6e0;
-}
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(500px 280px at 22% 20%, rgba(0,224,255,.18), transparent 60%),
+        radial-gradient(540px 300px at 88% 40%, rgba(92,255,122,.14), transparent 65%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .hero-card > *{ position:relative; z-index:1; }
 
-.cta-group{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(234,240,255,.9);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing:.3px;
+    }
+    .kicker b{
+      color:#061018;
+      background: linear-gradient(135deg, var(--accent), #2E7BFF);
+      padding: 4px 10px;
+      border-radius:999px;
+    }
 
-.btn{
-  padding:16px 36px;
-  border-radius:40px;
-  font-weight:700;
-  font-size:16px;
-}
+    h1{
+      margin: 16px 0 10px;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.07;
+      letter-spacing:-.8px;
+    }
+    .lead{
+      margin: 0;
+      color: rgba(234,240,255,.86);
+      font-size: 16.5px;
+      max-width: 58ch;
+    }
 
-.primary{
-  background:linear-gradient(135deg,var(--accent),#0077ff);
-  color:#000;
-}
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 22px;
+    }
 
-.secondary{
-  border:2px solid var(--accent);
-  color:var(--accent);
-}
+    .mini-cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    @media (max-width: 520px){
+      .mini-cards{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px 14px;
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px; margin-top:6px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 6px rgba(92,255,122,.12);
+      flex:0 0 auto;
+    }
+    .mini strong{ font-size:13px; display:block; }
+    .mini span{ font-size:12px; color: var(--muted); display:block; margin-top:2px; }
 
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:90px 40px;
-}
+    /* Status box (right side) */
+    .status-card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: 26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .status-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 300px at 18% 20%, rgba(46,123,255,.20), transparent 60%),
+        radial-gradient(520px 300px at 82% 38%, rgba(0,224,255,.14), transparent 62%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .status-card > *{ position:relative; z-index:1; }
 
-.alt{
-  background:rgba(255,255,255,.02);
-  border-radius:28px;
-}
+    .status-top{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      margin-bottom: 14px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius:999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      font-size:12px;
+      color: rgba(234,240,255,.88);
+      font-weight:700;
+    }
+    .pill i{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 6px rgba(92,255,122,.12);
+      display:inline-block;
+    }
+    .status-title{
+      font-weight: 850;
+      font-size: 18px;
+      letter-spacing:-.2px;
+      margin: 0;
+    }
+    .status-sub{
+      margin: 8px 0 0;
+      color: rgba(234,240,255,.86);
+      font-size: 13.5px;
+    }
 
-h2{
-  font-size:36px;
-  margin-bottom:20px;
-}
+    .status-metrics{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .metric{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .metric b{ display:block; font-size:12px; color: rgba(234,240,255,.82); }
+    .metric strong{ display:block; font-size:18px; margin-top:4px; }
+    .metric small{ display:block; color: var(--muted); margin-top:2px; font-size:12px; }
 
-.subtitle{
-  max-width:850px;
-  color:var(--muted);
-}
+    /* Sections */
+    section{ padding: 62px 0; }
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:18px;
+      margin-bottom: 18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: clamp(24px, 3.2vw, 38px);
+      letter-spacing:-.5px;
+    }
+    .section-head p{
+      margin:0;
+      max-width: 62ch;
+      color: rgba(234,240,255,.78);
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-  margin-top:50px;
-}
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    @media (max-width: 860px){
+      .grid-2{ grid-template-columns: 1fr; }
+      .section-head{ flex-direction:column; align-items:flex-start; }
+    }
 
-.card{
-  background:linear-gradient(180deg,#141b33,#0e1428);
-  border-radius:22px;
-  padding:32px;
-  border:1px solid rgba(255,255,255,.06);
-}
+    .panel{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
 
-.card h3{
-  margin-top:0;
-  color:var(--accent2);
-}
+    .bullets{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+    .bullets .ico{
+      width:28px; height:28px; border-radius:10px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+      margin-top:2px;
+      font-size:14px;
+    }
+    .bullets b{ display:block; font-size:14px; }
+    .bullets span{ display:block; color: var(--muted); font-size:13px; margin-top:2px; }
 
-.flow{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:26px;
-  margin-top:50px;
-}
+    /* Capabilities */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    @media (max-width: 980px){ .cards{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
 
-.step{
-  background:var(--card);
-  border-radius:22px;
-  padding:32px;
-  text-align:center;
-}
+    .card{
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+    }
+    .card h3{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing:-.2px;
+    }
+    .card p{
+      margin: 8px 0 0;
+      color: rgba(234,240,255,.78);
+      font-size: 13.5px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 12px;
+      color: rgba(234,240,255,.88);
+      padding: 6px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      margin-bottom: 10px;
+    }
+    .tag i{
+      width:10px; height:10px; border-radius:999px; display:inline-block;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(0,224,255,.12);
+    }
 
-.step span{
-  display:inline-block;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#000;
-  font-weight:700;
-  line-height:40px;
-  margin-bottom:14px;
-}
+    /* Pricing */
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    @media (max-width: 980px){ .pricing{ grid-template-columns: 1fr; } }
 
-.pricing{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-  margin-top:60px;
-}
+    .price-card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: 20px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .price-card.reco{
+      border-color: rgba(0,224,255,.35);
+      box-shadow: 0 26px 80px rgba(0,224,255,.14);
+    }
+    .badge{
+      position:absolute; top:16px; right:16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 850;
+      background: linear-gradient(135deg, var(--accent), #2E7BFF);
+      color:#061018;
+    }
+    .price-card h3{ margin:0; font-size:18px; }
+    .price-card p{ margin:6px 0 0; color: rgba(234,240,255,.78); font-size:13.5px; }
+    .price-rows{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .pbox{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .pbox b{ display:block; font-size:12px; color: rgba(234,240,255,.78); }
+    .pbox strong{ display:block; font-size:18px; margin-top:4px; }
+    .pbox small{ display:block; color: var(--muted); margin-top:2px; font-size:12px; }
 
-.plan{
-  background:linear-gradient(180deg,#141b33,#0e1428);
-  border-radius:26px;
-  padding:36px;
-  border:1px solid rgba(255,255,255,.08);
-}
+    .features{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .features li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.14);
+      font-size: 13px;
+      color: rgba(234,240,255,.82);
+    }
+    .features .check{
+      width:22px; height:22px; border-radius:8px;
+      display:grid; place-items:center;
+      background: rgba(92,255,122,.12);
+      border:1px solid rgba(92,255,122,.22);
+      color: var(--accent2);
+      font-weight: 900;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
 
-.plan h3{color:var(--accent)}
+    /* FAQ */
+    details{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 850;
+      color: rgba(234,240,255,.92);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin: 10px 0 0;
+      color: rgba(234,240,255,.78);
+      font-size: 13.5px;
+    }
 
-.plan .price{
-  font-size:28px;
-  font-weight:800;
-  margin:20px 0;
-}
+    /* CTA */
+    .cta{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(800px 340px at 18% 20%, rgba(0,224,255,.20), transparent 65%),
+        radial-gradient(800px 340px at 84% 45%, rgba(92,255,122,.16), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: 26px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 16px;
+      flex-wrap:wrap;
+    }
+    .cta h3{ margin:0; font-size:20px; letter-spacing:-.2px; }
+    .cta p{ margin: 6px 0 0; color: rgba(234,240,255,.78); font-size: 13.5px; max-width: 70ch; }
+    .cta .cta-actions{ display:flex; gap:10px; flex-wrap:wrap; }
 
-.plan ul{
-  padding-left:20px;
-  color:#cfd6e0;
-}
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .contact-grid{ grid-template-columns: 1fr; } }
 
-.cta-final{
-  background:linear-gradient(135deg,#00e0ff,#5cff7a);
-  color:#000;
-  border-radius:30px;
-  padding:90px 40px;
-  text-align:center;
-  margin:100px auto;
-  max-width:1200px;
-}
+    .contact-lines{
+      display:flex; flex-direction:column; gap:10px;
+      margin-top: 12px;
+    }
+    .line{
+      display:flex; gap:10px; align-items:center;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      font-size: 13.5px;
+      color: rgba(234,240,255,.86);
+      overflow-wrap:anywhere;
+    }
+    .line .b{
+      width:30px; height:30px; border-radius: 12px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      flex:0 0 auto;
+    }
+    form{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      outline:none;
+      font-size: 14px;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input::placeholder, textarea::placeholder{ color: rgba(169,180,208,.75); }
+    .form-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 6px;
+    }
 
-.cta-final h2{margin-bottom:16px}
+    footer{
+      padding: 26px 0 44px;
+      color: rgba(169,180,208,.80);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 34px;
+    }
 
-form{
-  max-width:600px;
-  margin:40px auto 0;
-  display:grid;
-  gap:16px;
-}
+    /* Floating WhatsApp */
+    .wa-float{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 999;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25D366, #2BBE5E);
+      color: #04110A;
+      font-weight: 900;
+      border: 1px solid rgba(37,211,102,.45);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+    .wa-float span{ font-size: 14px; }
+    .wa-float .ico{
+      width:34px; height:34px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.22);
+      border: 1px solid rgba(0,0,0,.10);
+      font-size: 16px;
+    }
 
-input,textarea{
-  padding:14px;
-  border-radius:12px;
-  border:none;
-  font-size:15px;
-}
-
-button{
-  padding:16px;
-  border:none;
-  border-radius:40px;
-  font-weight:800;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
-}
-
-footer{
-  text-align:center;
-  padding:30px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* WhatsApp flotante */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  background:#25D366;
-  color:#000;
-  padding:14px 20px;
-  border-radius:50px;
-  font-weight:800;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
-  z-index:999;
-}
-</style>
+    /* Tiny helper */
+    .muted{ color: rgba(234,240,255,.74); }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <img src="logo-omnix-enterprise.png" alt="OMNIX Enterprise">
-  <nav>
-    <a href="#porque">¿Por qué OMNIX?</a>
-    <a href="#solucion">Solución</a>
-    <a href="#planes">Planes</a>
-    <a href="#contacto">Agendar Demo</a>
-  </nav>
-</header>
+  <!-- CONFIG -->
+  <script>
+    const OMNIX = {
+      whatsappNumberE164: "16505078293",      // +1 6505078293
+      email: "madridpep3@gmail.com",
+      emailSubject: "Solicitud de Diagnóstico | OMNIX Enterprise"
+    };
 
-<section class="hero">
-  <h1>No es un bot.<br>Es tu cerebro comercial.</h1>
-  <p>
-    OMNIX Enterprise automatiza WhatsApp, ventas, correos y reportes
-    con una infraestructura de decisión que ejecuta procesos reales,
-    no respuestas vacías.
-  </p>
+    function waLink(message){
+      const msg = encodeURIComponent(message || "");
+      return `https://wa.me/${OMNIX.whatsappNumberE164}?text=${msg}`;
+    }
 
-  <div class="cta-group">
-    <a class="btn primary" href="https://wa.me/16504815494" target="_blank">
-      Solicitar Diagnóstico Gratis
-    </a>
-    <a class="btn secondary" href="#solucion">
-      Ver Capacidades
-    </a>
-  </div>
-</section>
+    function gmailComposeLink(to, subject, body){
+      const s = encodeURIComponent(subject || "");
+      const b = encodeURIComponent(body || "");
+      // Fuerza Gmail web compose (no Outlook)
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${s}&body=${b}`;
+    }
 
-<section id="porque">
-  <h2>¿Tu negocio vive esto todos los días?</h2>
-  <p class="subtitle">
-    Si recibes más de 50 mensajes diarios, ya conoces el dolor.
-  </p>
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  </script>
 
-  <div class="grid">
-    <div class="card">
-      <h3>⏳ Respuestas lentas</h3>
-      <p>Clientes esperando horas por WhatsApp.</p>
-    </div>
-    <div class="card">
-      <h3>💸 Ventas perdidas</h3>
-      <p>Leads sin seguimiento ni orden.</p>
-    </div>
-    <div class="card">
-      <h3>😵 Equipo agotado</h3>
-      <p>Respondiendo lo mismo 100 veces al día.</p>
-    </div>
-  </div>
-</section>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" onclick="scrollToId('inicio')">
+        <img src="logo.png" alt="OMNIX Enterprise Logo" />
+        <div class="title">
+          <strong>OMNIX Enterprise</strong>
+          <span>n8n + GPT-4 Automation</span>
+        </div>
+      </a>
 
-<section id="solucion" class="alt">
-  <h2>Lo que OMNIX realmente hace</h2>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#porque">¿Por qué OMNIX?</a>
+        <a href="#solucion">Solución</a>
+        <a href="#planes">Planes</a>
+        <a href="#contacto">Agendar Demo</a>
+      </nav>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🧠 Cerebro GPT-4</h3>
-      <p>Entiende intención y contexto real del cliente.</p>
-    </div>
-    <div class="card">
-      <h3>🛒 Venta autónoma</h3>
-      <p>Consulta stock, envía productos y genera links de pago.</p>
-    </div>
-    <div class="card">
-      <h3>📄 Reportes PDF</h3>
-      <p>Pide reportes por WhatsApp y recíbelos en tu correo.</p>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="#planes">Ver Planes</a>
+        <a class="btn btn-primary" href="#contacto">Agendar Demo</a>
+      </div>
     </div>
   </div>
-</section>
 
-<section>
-  <h2>Cómo funciona</h2>
+  <!-- HERO -->
+  <div class="container hero" id="inicio">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <div class="kicker"><b>OMNIX</b> n8n + GPT-4 Enterprise Automation</div>
 
-  <div class="flow">
-    <div class="step"><span>1</span>Mensaje del cliente</div>
-    <div class="step"><span>2</span>Validación inteligente</div>
-    <div class="step"><span>3</span>Ejecución automática</div>
-    <div class="step"><span>4</span>Escala a humano si hace falta</div>
+        <h1>No es un bot.<br>Es tu <span style="background:linear-gradient(135deg,var(--accent),#2E7BFF); -webkit-background-clip:text; background-clip:text; color:transparent;">Cerebro Comercial</span>.</h1>
+
+        <p class="lead">
+          Automatiza tu E-commerce en Barranquilla con IA de nivel mundial.
+          OMNIX automatiza el 90% de WhatsApp y ventas repetitivas. GPT-4 entiende la intención del cliente,
+          consulta stock real, genera links de pago y escala a humano solo si es necesario.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-whatsapp" id="btnHeroWA" href="#">💬 Solicitar Diagnóstico Gratis</a>
+          <a class="btn btn-ghost" href="#solucion">⚡ Ver Capacidades</a>
+          <a class="btn btn-primary" id="btnHeroEmail" href="#">✉️ Email (Gmail)</a>
+        </div>
+
+        <div class="mini-cards">
+          <div class="mini">
+            <div class="dot"></div>
+            <div>
+              <strong>Omnix Flow</strong>
+              <span>Automatización end-to-end: WhatsApp → stock → pago → reporte</span>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="dot"></div>
+            <div>
+              <strong>Estado del Sistema</strong>
+              <span>Operativo 24/7 · Validación y control antes de ejecutar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="status-card">
+        <div class="status-top">
+          <div>
+            <p class="status-title">Estado del Sistema</p>
+            <p class="status-sub">Infraestructura n8n + IA con validación de datos y fallback.</p>
+          </div>
+          <div class="pill"><i></i> Operativo</div>
+        </div>
+
+        <div class="status-metrics">
+          <div class="metric">
+            <b>Disponibilidad</b>
+            <strong>24/7</strong>
+            <small>Respuesta constante</small>
+          </div>
+          <div class="metric">
+            <b>Errores humanos</b>
+            <strong>0</strong>
+            <small>Detectados (modo controlado)</small>
+          </div>
+          <div class="metric">
+            <b>Canales</b>
+            <strong>WA + Gmail</strong>
+            <small>y más integraciones</small>
+          </div>
+          <div class="metric">
+            <b>Entrega</b>
+            <strong>PDF</strong>
+            <small>Reportes en segundos</small>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-whatsapp" id="btnStatusWA" href="#">💬 WhatsApp</a>
+          <a class="btn btn-ghost" href="#porque">🔎 Ver Dolor</a>
+        </div>
+      </aside>
+    </div>
   </div>
-</section>
 
-<section id="planes" class="alt">
-  <h2>Planes</h2>
+  <!-- WHY / PAIN -->
+  <section id="porque">
+    <div class="container">
+      <div class="section-head">
+        <h2>¿Tu negocio está sufriendo esto?</h2>
+        <p>Si tienes más de 50 mensajes al día, ya conoces el dolor.</p>
+      </div>
 
-  <div class="pricing">
-    <div class="plan">
-      <h3>Starter</h3>
-      <div class="price">Setup COP 3M<br>Mensual COP 800K</div>
-      <ul>
-        <li>WhatsApp + E-commerce</li>
-        <li>Flujos base</li>
-        <li>Soporte por tickets</li>
-      </ul>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="tag"><i></i> Antes de OMNIX</div>
+          <ul class="bullets">
+            <li><div class="ico">⏳</div><div><b>Clientes esperando</b><span>Horas por una respuesta.</span></div></li>
+            <li><div class="ico">📦</div><div><b>Errores de stock / precio</b><span>Consultas manuales y confusión.</span></div></li>
+            <li><div class="ico">😵</div><div><b>Equipo agotado</b><span>Respondiendo lo mismo 100 veces.</span></div></li>
+            <li><div class="ico">💸</div><div><b>Ventas perdidas</b><span>Sin seguimiento ni cierre.</span></div></li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <div class="tag"><i></i> Con OMNIX</div>
+          <ul class="bullets">
+            <li><div class="ico">⚡</div><div><b>Respuesta instantánea</b><span>WhatsApp 24/7 con criterio.</span></div></li>
+            <li><div class="ico">🔗</div><div><b>Sincronización real</b><span>PrestaShop / E-commerce vía APIs.</span></div></li>
+            <li><div class="ico">📈</div><div><b>Leads + reportes</b><span>Seguimiento automático y reportes.</span></div></li>
+            <li><div class="ico">🧑‍💼</div><div><b>Escala a humano</b><span>Solo en casos críticos.</span></div></li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="plan">
-      <h3>Professional</h3>
-      <div class="price">Setup COP 8M<br>Mensual COP 2.5M</div>
-      <ul>
-        <li>WhatsApp + Gmail</li>
-        <li>Reportes PDF</li>
-        <li>Soporte prioritario</li>
-      </ul>
+  <!-- SOLUTION / CAPABILITIES -->
+  <section id="solucion">
+    <div class="container">
+      <div class="section-head">
+        <h2>Lo que OMNIX realmente hace</h2>
+        <p>No conversa por conversar. Ejecuta procesos de negocio complejos de forma autónoma.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="tag"><i></i> Cerebro GPT-4</div>
+          <h3>Entiende intención real</h3>
+          <p>Comprende contexto, tono y objetivo del cliente sin reglas rígidas por palabras clave.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag"><i></i> Memoria</div>
+          <h3>Memoria por cliente</h3>
+          <p>Recuerda preferencias e historial (Supabase/PostgreSQL) para responder mejor y vender más.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag"><i></i> Venta Autónoma</div>
+          <h3>Stock real + pagos</h3>
+          <p>Consulta stock real en PrestaShop, envía fotos/productos y genera links de pago automáticamente.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag"><i></i> Correo (Gmail)</div>
+          <h3>Gestión de correo</h3>
+          <p>Responde dudas frecuentes en Gmail y clasifica pedidos entrantes sin que toques el teclado.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag"><i></i> Reportes</div>
+          <h3>Reportes PDF</h3>
+          <p>Pide un resumen de ventas del día por WhatsApp y recíbelo en PDF en tu Gmail en segundos.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag"><i></i> Seguridad</div>
+          <h3>Enterprise-grade</h3>
+          <p>Infra robusta en n8n con validación de datos, backups y control para evitar errores costosos.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;">
+        <div class="cta">
+          <div>
+            <h3>Diagnóstico sin costo · 15 minutos</h3>
+            <p>Te decimos exactamente qué automatizar primero, cuánto tiempo ahorras y cómo se implementa sin romper tu operación.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-whatsapp" id="btnCtaWA" href="#">💬 WhatsApp</a>
+            <a class="btn btn-primary" id="btnCtaEmail" href="#">✉️ Gmail</a>
+            <a class="btn btn-ghost" href="#planes">Ver Planes</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="plan">
-      <h3>Enterprise</h3>
-      <div class="price">Desde COP 20M</div>
-      <ul>
-        <li>Infraestructura dedicada</li>
-        <li>APIs personalizadas</li>
-        <li>SLA 1 hora</li>
-      </ul>
+  <!-- PRICING -->
+  <section id="planes">
+    <div class="container">
+      <div class="section-head">
+        <h2>Costo mensual vs contratar una persona</h2>
+        <p>Modelo de Implementación (Setup) + Operación Mensual.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <p>Ideal para tiendas en crecimiento.</p>
+
+          <div class="price-rows">
+            <div class="pbox"><b>Setup Único</b><strong>COP 3.000.000</strong><small>Implementación base</small></div>
+            <div class="pbox"><b>Mensual</b><strong>COP 800.000</strong><small>Operación + soporte</small></div>
+          </div>
+
+          <ul class="features">
+            <li><div class="check">✓</div> WhatsApp + PrestaShop</li>
+            <li><div class="check">✓</div> Flujos de atención base</li>
+            <li><div class="check">✓</div> Soporte vía Ticket</li>
+          </ul>
+
+          <div class="form-actions">
+            <a class="btn btn-whatsapp" id="btnStarterWA" href="#">Empezar Ahora</a>
+            <a class="btn btn-ghost" href="#contacto">Agendar Demo</a>
+          </div>
+        </div>
+
+        <div class="price-card reco">
+          <div class="badge">RECOMENDADO</div>
+          <h3>Professional</h3>
+          <p>Para alto volumen y múltiples canales.</p>
+
+          <div class="price-rows">
+            <div class="pbox"><b>Setup Único</b><strong>COP 8.000.000</strong><small>Multi-canal + DB</small></div>
+            <div class="pbox"><b>Mensual</b><strong>COP 2.500.000</strong><small>Prioridad + reportes</small></div>
+          </div>
+
+          <ul class="features">
+            <li><div class="check">✓</div> WhatsApp + Gmail + Drive</li>
+            <li><div class="check">✓</div> Reportes PDF Automáticos</li>
+            <li><div class="check">✓</div> Base de Datos Supabase</li>
+            <li><div class="check">✓</div> Soporte Prioritario</li>
+          </ul>
+
+          <div class="form-actions">
+            <a class="btn btn-primary" href="#contacto">Agendar Llamada</a>
+            <a class="btn btn-whatsapp" id="btnProWA" href="#">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <p>Infraestructura a medida.</p>
+
+          <div class="price-rows">
+            <div class="pbox"><b>Setup Único</b><strong>Desde 20M</strong><small>Integraciones a medida</small></div>
+            <div class="pbox"><b>Mensual</b><strong>Personalizado</strong><small>SLA + consultoría</small></div>
+          </div>
+
+          <ul class="features">
+            <li><div class="check">✓</div> Integraciones API Custom</li>
+            <li><div class="check">✓</div> Servidor Dedicado</li>
+            <li><div class="check">✓</div> SLA de Respuesta 1h</li>
+            <li><div class="check">✓</div> Consultoría Continua</li>
+          </ul>
+
+          <div class="form-actions">
+            <a class="btn btn-whatsapp" id="btnEntWA" href="#">Contactar Ventas</a>
+            <a class="btn btn-ghost" id="btnEntEmail" href="#">Email (Gmail)</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="cta-final" id="contacto">
-  <h2>Agenda tu diagnóstico gratuito</h2>
-  <p>15 minutos para decirte exactamente cuánto puedes ahorrar.</p>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Preguntas Frecuentes</h2>
+        <p>Respuestas claras para empresas que quieren automatizar sin perder control.</p>
+      </div>
 
-  <form action="mailto:madridpep3@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="Nombre" placeholder="Nombre completo" required>
-    <input type="email" name="Email" placeholder="Email corporativo" required>
-    <textarea name="Mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio"></textarea>
-    <button type="submit">Enviar solicitud</button>
-  </form>
+      <details open>
+        <summary>¿Es seguro para mis datos?</summary>
+        <p>Absolutamente. Usamos infraestructura cifrada y tus datos se almacenan en bases privadas (Supabase/PostgreSQL) con backups diarios y validación antes de ejecutar acciones.</p>
+      </details>
 
-  <p style="margin-top:30px;font-weight:700">
-    📞 <a href="https://wa.me/16504815494" target="_blank">+1 650 481 5494</a><br>
-    ✉️ <a href="mailto:madridpep3@gmail.com">madridpep3@gmail.com</a>
-  </p>
-</div>
+      <details>
+        <summary>¿Qué pasa si el cliente hace una pregunta difícil?</summary>
+        <p>OMNIX detecta cuando no puede resolver algo y escala la conversación a un humano de tu equipo, con contexto completo para que el cierre sea rápido.</p>
+      </details>
 
-<footer>
-  © 2026 OMNIX Enterprise · Automatización Empresarial con IA
-</footer>
+      <details>
+        <summary>¿Tengo que cambiar mi software actual?</summary>
+        <p>No. OMNIX se conecta a lo que ya usas (PrestaShop, Gmail, etc.) mediante APIs, actuando como un puente inteligente.</p>
+      </details>
+    </div>
+  </section>
 
-<a class="whatsapp" href="https://wa.me/16504815494" target="_blank">
-  💬 WhatsApp
-</a>
+  <!-- FINAL CTA + CONTACT -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <h2>¿Listo para escalar?</h2>
+        <p>
+          OMNIX no te hace vender más por magia. Te permite atender a todos sin perder oportunidades.
+          Eso es real, honesto y poderoso.
+        </p>
+      </div>
+
+      <div class="cta">
+        <div>
+          <h3>Agenda un diagnóstico gratuito de 15 minutos</h3>
+          <p>Analizaremos tus procesos y te diremos exactamente cuánto tiempo y dinero puedes ahorrar.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-whatsapp" id="btnContactWA" href="#">💬 WhatsApp</a>
+          <a class="btn btn-primary" id="btnContactEmail" href="#">✉️ Gmail</a>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel">
+          <div class="tag"><i></i> Contacto directo</div>
+
+          <div class="contact-lines">
+            <a class="line" id="linePhone" href="#">
+              <div class="b">📞</div>
+              <div><b>+1 650 507 8293</b><div class="muted">Click para abrir WhatsApp</div></div>
+            </a>
+
+            <a class="line" id="lineEmail" href="#">
+              <div class="b">✉️</div>
+              <div><b>madridpep3@gmail.com</b><div class="muted">Click para abrir Gmail (Compose)</div></div>
+            </a>
+
+            <div class="line">
+              <div class="b">🛡️</div>
+              <div><b>Implementación controlada</b><div class="muted">Automatiza sin romper operación</div></div>
+            </div>
+          </div>
+
+          <div class="form-actions" style="margin-top:12px;">
+            <a class="btn btn-whatsapp" id="btnQuickWA" href="#">Abrir WhatsApp</a>
+            <a class="btn btn-ghost" id="btnQuickEmail" href="#">Abrir Gmail</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="tag"><i></i> Enviar Solicitud de Diagnóstico</div>
+
+          <form id="omnixForm">
+            <input id="fullName" type="text" placeholder="Nombre Completo" required />
+            <input id="corpEmail" type="email" placeholder="Email Corporativo" required />
+            <textarea id="about" placeholder="Cuéntanos sobre tu negocio (volumen de mensajes, canales...)" required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Enviar Solicitud de Diagnóstico</button>
+              <a class="btn btn-whatsapp" id="btnFormWA" href="#">WhatsApp</a>
+            </div>
+
+            <div class="muted" style="font-size:12px; margin-top:6px;">
+              Al enviar: se abrirá Gmail con el mensaje listo, y también WhatsApp con el mismo texto.
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer>
+        <div class="container">
+          © 2026 OMNIX Enterprise · Automatización Operativa Empresarial · WhatsApp + Gmail · n8n + GPT-4
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp -->
+  <a class="wa-float" id="waFloat" href="#">
+    <div class="ico">💬</div>
+    <span>WhatsApp</span>
+  </a>
+
+  <script>
+    // Build default messages
+    const defaultWA = `Hola, quiero un diagnóstico para mi negocio con OMNIX Enterprise.`;
+    const defaultEmailBody =
+`Hola OMNIX,
+
+Quiero agendar un diagnóstico gratuito de 15 minutos.
+
+Mi nombre:
+Mi email corporativo:
+Mi negocio (volumen de mensajes, canales, dolor principal):
+
+Gracias.`;
+
+    // Set static links
+    document.getElementById("btnHeroWA").href = waLink(defaultWA);
+    document.getElementById("btnStatusWA").href = waLink(defaultWA);
+    document.getElementById("btnCtaWA").href = waLink(defaultWA);
+    document.getElementById("btnStarterWA").href = waLink("Hola, quiero empezar con el plan Starter de OMNIX. ¿Qué necesito para iniciar?");
+    document.getElementById("btnProWA").href = waLink("Hola, quiero agendar una llamada para el plan Professional de OMNIX.");
+    document.getElementById("btnEntWA").href = waLink("Hola, quiero hablar con ventas para una implementación Enterprise de OMNIX.");
+    document.getElementById("btnContactWA").href = waLink(defaultWA);
+    document.getElementById("btnQuickWA").href = waLink(defaultWA);
+    document.getElementById("btnFormWA").href = waLink(defaultWA);
+    document.getElementById("waFloat").href = waLink(defaultWA);
+    document.getElementById("linePhone").href = waLink(defaultWA);
+
+    const emailComposeDefault = gmailComposeLink(OMNIX.email, OMNIX.emailSubject, defaultEmailBody);
+    document.getElementById("btnHeroEmail").href = emailComposeDefault;
+    document.getElementById("btnCtaEmail").href = emailComposeDefault;
+    document.getElementById("btnContactEmail").href = emailComposeDefault;
+    document.getElementById("btnQuickEmail").href = emailComposeDefault;
+    document.getElementById("btnEntEmail").href = emailComposeDefault;
+    document.getElementById("lineEmail").href = emailComposeDefault;
+
+    // Form submit: open Gmail + WhatsApp with same message
+    document.getElementById("omnixForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const name = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("corpEmail").value.trim();
+      const about = document.getElementById("about").value.trim();
+
+      const body =
+`Hola OMNIX,
+
+Quiero agendar un diagnóstico gratuito de 15 minutos.
+
+Nombre: ${name}
+Email: ${email}
+
+Negocio / Necesidad:
+${about}
+
+Gracias.`;
+
+      const gmailUrl = gmailComposeLink(OMNIX.email, OMNIX.emailSubject, body);
+      const waUrl = waLink(body);
+
+      // Abre Gmail (tab 1) y WhatsApp (tab 2)
+      window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    });
+  </script>
 
 </body>
 </html>
