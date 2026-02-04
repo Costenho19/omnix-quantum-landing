@@ -1,222 +1,215 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="OMNIX - Automatización comercial con IA para WhatsApp, ventas y atención al cliente en Colombia.">
-<title>OMNIX | Automatización Comercial con IA</title>
+  <meta charset="UTF-8">
+  <title>OMNIX Enterprise | Automatización Operativa con IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- LIBRERÍAS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #0b0f19;
+      color: #eaeaea;
+      line-height: 1.6;
+    }
 
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-dark: '#030712',
-primary: '#6366f1'
-}
-}
-}
-}
-</script>
+    a {
+      color: #00e0ff;
+      text-decoration: none;
+    }
 
-<style>
-body {
-font-family: 'Inter', sans-serif;
-background:#030712;
-color:#f1f5f9;
-}
-.glass {
-background: rgba(255,255,255,0.04);
-backdrop-filter: blur(12px);
-border: 1px solid rgba(255,255,255,0.06);
-}
-.gradient {
-background: linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-</style>
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #050812;
+    }
+
+    header img {
+      height: 42px;
+    }
+
+    header nav a {
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 40px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 18px;
+      color: #cfd6e0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 32px;
+      background-color: #00e0ff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    section {
+      padding: 70px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section.dark {
+      background-color: #050812;
+      border-radius: 12px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: #11162a;
+      padding: 24px;
+      border-radius: 10px;
+    }
+
+    .steps li {
+      margin: 14px 0;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 90px 40px;
+      background: linear-gradient(135deg, #00e0ff, #0077ff);
+      color: #000;
+      margin-top: 80px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #050812;
+      font-size: 14px;
+      color: #9aa3b2;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="fixed w-full z-50 glass">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<img src="logo-omnix.png" alt="OMNIX" class="h-9 w-auto">
-<div class="text-2xl font-black gradient">OMNIX</div>
-</div>
-<div class="hidden md:flex gap-8 font-semibold">
-<a href="#inicio">Inicio</a>
-<a href="#solucion">Solución</a>
-<a href="#planes">Planes</a>
-<a href="#contacto" class="bg-indigo-600 px-5 py-2 rounded-xl">Agendar Demo</a>
-</div>
-</div>
-</nav>
+<header>
+  <img src="logo-omnix-enterprise.png" alt="OMNIX Enterprise">
+  <nav>
+    <a href="#que-es">Qué es</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-<!-- HERO -->
-<section id="inicio" class="pt-40 pb-24 px-6">
-<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-<div data-aos="fade-right">
-<h1 class="text-5xl font-extrabold mb-6">
-No es un bot.<br>
-Es tu <span class="gradient">Cerebro Comercial</span>.
-</h1>
-<p class="text-xl text-indigo-300 mb-6">
-Automatiza WhatsApp, ventas y atención al cliente con IA.
-</p>
-<p class="text-slate-400 max-w-xl mb-10">
-OMNIX atiende clientes 24/7, responde preguntas reales, consulta stock, genera ventas y escala a humano solo cuando es necesario.
-</p>
-<div class="flex gap-4">
-<a href="#contacto" class="bg-indigo-600 px-8 py-4 rounded-2xl font-bold">Solicitar Diagnóstico Gratis</a>
-<a href="https://wa.me/16505078293" target="_blank" class="glass px-8 py-4 rounded-2xl font-bold">
-Hablar por WhatsApp
-</a>
-</div>
-</div>
-
-<div data-aos="zoom-in" class="glass rounded-3xl p-10 flex justify-center">
-<img src="logo-omnix.png" alt="OMNIX Logo" class="max-w-xs">
-</div>
-</div>
+<section class="hero">
+  <h1>Automatiza. Decide. Escala.</h1>
+  <p>
+    OMNIX Enterprise es una infraestructura de automatización operativa
+    que conecta WhatsApp, PrestaShop, Google Drive y bases de datos reales
+    para reducir carga humana y aumentar eficiencia empresarial.
+  </p>
+  <a href="#contacto" class="btn">Solicitar demostración</a>
 </section>
 
-<!-- SOLUCIÓN -->
-<section id="solucion" class="py-24 px-6 bg-slate-900/30">
-<div class="max-w-7xl mx-auto text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">¿Qué hace OMNIX?</h2>
-<p class="text-slate-400">Automiza procesos reales, no conversaciones vacías.</p>
-</div>
-
-<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6">
-<div class="glass p-8 rounded-3xl">
-<i class="fab fa-whatsapp text-green-500 text-3xl mb-4"></i>
-<h3 class="font-bold mb-2">WhatsApp 24/7</h3>
-<p class="text-sm text-slate-400">Atención instantánea sin saturar a tu equipo.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl">
-<i class="fas fa-brain text-indigo-400 text-3xl mb-4"></i>
-<h3 class="font-bold mb-2">IA Contextual</h3>
-<p class="text-sm text-slate-400">Entiende intención, no palabras clave.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl">
-<i class="fas fa-chart-line text-cyan-400 text-3xl mb-4"></i>
-<h3 class="font-bold mb-2">Ventas Automáticas</h3>
-<p class="text-sm text-slate-400">Convierte chats en ingresos reales.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl">
-<i class="fas fa-shield-alt text-purple-400 text-3xl mb-4"></i>
-<h3 class="font-bold mb-2">Control Total</h3>
-<p class="text-sm text-slate-400">Escala a humano solo cuando hace falta.</p>
-</div>
-</div>
+<section id="que-es">
+  <h2>¿Qué es OMNIX Enterprise?</h2>
+  <p>
+    OMNIX Enterprise no es un chatbot genérico ni un software cerrado.
+    Es una capa de automatización que se adapta a tu empresa, conecta
+    tus sistemas actuales y ejecuta procesos reales sin reemplazarlos.
+  </p>
+  <p>
+    Diseñado para empresas que necesitan control, trazabilidad y
+    automatización sin cambiar su tecnología actual.
+  </p>
 </section>
 
-<!-- PLANES -->
-<section id="planes" class="py-24 px-6">
-<div class="max-w-7xl mx-auto text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Planes</h2>
-<p class="text-slate-400">Más barato que contratar una persona.</p>
-</div>
+<section id="funciones" class="dark">
+  <h2>Funciones principales</h2>
 
-<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+  <div class="grid">
+    <div class="card">
+      <h3>🔐 Autenticación y roles</h3>
+      <p>Control de acceso por usuario, admin y superadmin usando Supabase.</p>
+    </div>
 
-<div class="glass p-10 rounded-3xl">
-<h3 class="text-2xl font-bold mb-2">Starter</h3>
-<p class="text-slate-400 mb-6">Negocios pequeños</p>
-<p class="text-3xl font-black mb-2">COP 3.000.000</p>
-<p class="text-indigo-400 mb-6">+ COP 800.000 / mes</p>
-<ul class="text-sm text-slate-400 space-y-2">
-<li>✔ WhatsApp automático</li>
-<li>✔ Flujos básicos</li>
-<li>✔ Soporte estándar</li>
-</ul>
-</div>
+    <div class="card">
+      <h3>📦 Productos en tiempo real</h3>
+      <p>Consulta directa a PrestaShop: precios, stock y descripciones reales.</p>
+    </div>
 
-<div class="glass p-10 rounded-3xl border-2 border-indigo-600">
-<h3 class="text-2xl font-bold mb-2">Professional</h3>
-<p class="text-slate-400 mb-6">Alto volumen</p>
-<p class="text-3xl font-black mb-2">COP 8.000.000</p>
-<p class="text-indigo-400 mb-6">+ COP 2.500.000 / mes</p>
-<ul class="text-sm text-slate-300 space-y-2">
-<li>✔ WhatsApp + Email</li>
-<li>✔ Reportes automáticos</li>
-<li>✔ Base de datos</li>
-<li>✔ Soporte prioritario</li>
-</ul>
-</div>
+    <div class="card">
+      <h3>🧾 Pedidos y clientes</h3>
+      <p>Gestión de pedidos, estados y clientes desde WhatsApp o panel interno.</p>
+    </div>
 
-<div class="glass p-10 rounded-3xl">
-<h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-<p class="text-slate-400 mb-6">A medida</p>
-<p class="text-3xl font-black mb-2">Desde 20M</p>
-<p class="text-indigo-400 mb-6">Mensual personalizado</p>
-<ul class="text-sm text-slate-400 space-y-2">
-<li>✔ Integraciones API</li>
-<li>✔ Servidor dedicado</li>
-<li>✔ SLA empresarial</li>
-</ul>
-</div>
+    <div class="card">
+      <h3>📊 Informes automáticos</h3>
+      <p>Reportes en Google Docs convertidos a PDF y enviados por correo o WhatsApp.</p>
+    </div>
 
-</div>
+    <div class="card">
+      <h3>📚 Base de conocimiento</h3>
+      <p>Búsqueda inteligente en documentos empresariales con IA semántica.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Integración sin fricción</h3>
+      <p>No reemplaza sistemas: se conecta y automatiza lo que ya usas.</p>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACTO -->
-<section id="contacto" class="py-24 px-6 bg-slate-900/30">
-<div class="max-w-4xl mx-auto glass p-12 rounded-3xl">
-<h2 class="text-4xl font-bold mb-6 text-center">Solicita tu diagnóstico gratuito</h2>
-
-<form id="contact-form" class="space-y-6">
-<input id="name" required placeholder="Nombre completo" class="w-full p-4 rounded-xl bg-white/5">
-<input id="email" required placeholder="Email" class="w-full p-4 rounded-xl bg-white/5">
-<textarea id="message" rows="4" placeholder="Cuéntanos sobre tu negocio" class="w-full p-4 rounded-xl bg-white/5"></textarea>
-<button type="submit" class="w-full bg-indigo-600 py-4 rounded-xl font-bold">
-Enviar a WhatsApp
-</button>
-</form>
-
-<p class="text-center mt-6 text-slate-400">
-📞 +1 650 507 8293
-</p>
-</div>
+<section id="como-funciona">
+  <h2>Cómo funciona</h2>
+  <ol class="steps">
+    <li>El usuario escribe por WhatsApp o Webhook</li>
+    <li>OMNIX valida identidad y permisos</li>
+    <li>La IA detecta la intención real</li>
+    <li>Se ejecuta el flujo n8n correspondiente</li>
+    <li>El resultado se entrega en texto o audio</li>
+  </ol>
 </section>
 
-<footer class="py-12 text-center text-slate-500">
-<img src="logo-omnix.png" class="h-10 mx-auto mb-4">
-© OMNIX · Barranquilla, Colombia
+<section class="cta" id="contacto">
+  <h2>Solicita una demo privada</h2>
+  <p>
+    Implementación personalizada según tu operación y volumen.
+    Diagnóstico inicial sin costo.
+  </p>
+  <a href="mailto:madridpep3@gmail.com" class="btn">
+    Contactar ahora
+  </a>
+</section>
+
+<footer>
+  © 2026 OMNIX Enterprise · Automatización Operativa Empresarial
 </footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({once:true});
-
-document.getElementById("contact-form").addEventListener("submit",function(e){
-e.preventDefault();
-const n=document.getElementById("name").value;
-const em=document.getElementById("email").value;
-const m=document.getElementById("message").value;
-
-const text=`Hola, quiero un diagnóstico OMNIX.
-
-Nombre: ${n}
-Email: ${em}
-Mensaje:
-${m}`;
-
-window.open("https://wa.me/16505078293?text="+encodeURIComponent(text),"_blank");
-});
-</script>
 
 </body>
 </html>
