@@ -1,117 +1,220 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="OMNIX - Automatización comercial con IA para negocios en Colombia." />
-    <title>OMNIX | Automatización Comercial con IA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="OMNIX - Automatización comercial con IA para WhatsApp, ventas y atención al cliente en Colombia.">
+<title>OMNIX | Automatización Comercial con IA</title>
 
-    <!-- Scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- LIBRERÍAS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { dark: '#030712' },
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+dark: '#030712',
+primary: '#6366f1'
+}
+}
+}
+}
+</script>
 
-    <style>
-        body { background:#030712; color:#f1f5f9; font-family:'Plus Jakarta Sans',sans-serif; }
-        .glass { background:rgba(255,255,255,.03); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.05); }
-        .gradient-text {
-            background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-        }
-    </style>
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background:#030712;
+color:#f1f5f9;
+}
+.glass {
+background: rgba(255,255,255,0.04);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255,255,255,0.06);
+}
+.gradient {
+background: linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+</style>
 </head>
 
 <body>
 
 <!-- NAV -->
-<nav class="fixed w-full z-50 glass border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-black gradient-text">OMNIX</div>
-        <a href="#contacto" class="px-6 py-2 bg-indigo-600 rounded-xl text-white font-bold">Agendar Demo</a>
-    </div>
+<nav class="fixed w-full z-50 glass">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<img src="logo-omnix.png" alt="OMNIX" class="h-9 w-auto">
+<div class="text-2xl font-black gradient">OMNIX</div>
+</div>
+<div class="hidden md:flex gap-8 font-semibold">
+<a href="#inicio">Inicio</a>
+<a href="#solucion">Solución</a>
+<a href="#planes">Planes</a>
+<a href="#contacto" class="bg-indigo-600 px-5 py-2 rounded-xl">Agendar Demo</a>
+</div>
+</div>
 </nav>
 
 <!-- HERO -->
-<section class="pt-40 pb-20 px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
-        No es un bot.<br>Es tu <span class="gradient-text">Cerebro Comercial</span>.
-    </h1>
-    <p class="text-xl text-indigo-300 mb-8">
-        Automatiza WhatsApp, ventas y atención al cliente con IA.
-    </p>
-    <a href="#contacto" class="px-10 py-5 bg-indigo-600 rounded-2xl text-white font-bold text-lg">
-        Solicitar Diagnóstico Gratis
-    </a>
+<section id="inicio" class="pt-40 pb-24 px-6">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<div data-aos="fade-right">
+<h1 class="text-5xl font-extrabold mb-6">
+No es un bot.<br>
+Es tu <span class="gradient">Cerebro Comercial</span>.
+</h1>
+<p class="text-xl text-indigo-300 mb-6">
+Automatiza WhatsApp, ventas y atención al cliente con IA.
+</p>
+<p class="text-slate-400 max-w-xl mb-10">
+OMNIX atiende clientes 24/7, responde preguntas reales, consulta stock, genera ventas y escala a humano solo cuando es necesario.
+</p>
+<div class="flex gap-4">
+<a href="#contacto" class="bg-indigo-600 px-8 py-4 rounded-2xl font-bold">Solicitar Diagnóstico Gratis</a>
+<a href="https://wa.me/16505078293" target="_blank" class="glass px-8 py-4 rounded-2xl font-bold">
+Hablar por WhatsApp
+</a>
+</div>
+</div>
+
+<div data-aos="zoom-in" class="glass rounded-3xl p-10 flex justify-center">
+<img src="logo-omnix.png" alt="OMNIX Logo" class="max-w-xs">
+</div>
+</div>
+</section>
+
+<!-- SOLUCIÓN -->
+<section id="solucion" class="py-24 px-6 bg-slate-900/30">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">¿Qué hace OMNIX?</h2>
+<p class="text-slate-400">Automiza procesos reales, no conversaciones vacías.</p>
+</div>
+
+<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6">
+<div class="glass p-8 rounded-3xl">
+<i class="fab fa-whatsapp text-green-500 text-3xl mb-4"></i>
+<h3 class="font-bold mb-2">WhatsApp 24/7</h3>
+<p class="text-sm text-slate-400">Atención instantánea sin saturar a tu equipo.</p>
+</div>
+
+<div class="glass p-8 rounded-3xl">
+<i class="fas fa-brain text-indigo-400 text-3xl mb-4"></i>
+<h3 class="font-bold mb-2">IA Contextual</h3>
+<p class="text-sm text-slate-400">Entiende intención, no palabras clave.</p>
+</div>
+
+<div class="glass p-8 rounded-3xl">
+<i class="fas fa-chart-line text-cyan-400 text-3xl mb-4"></i>
+<h3 class="font-bold mb-2">Ventas Automáticas</h3>
+<p class="text-sm text-slate-400">Convierte chats en ingresos reales.</p>
+</div>
+
+<div class="glass p-8 rounded-3xl">
+<i class="fas fa-shield-alt text-purple-400 text-3xl mb-4"></i>
+<h3 class="font-bold mb-2">Control Total</h3>
+<p class="text-sm text-slate-400">Escala a humano solo cuando hace falta.</p>
+</div>
+</div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="py-24 px-6">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Planes</h2>
+<p class="text-slate-400">Más barato que contratar una persona.</p>
+</div>
+
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+
+<div class="glass p-10 rounded-3xl">
+<h3 class="text-2xl font-bold mb-2">Starter</h3>
+<p class="text-slate-400 mb-6">Negocios pequeños</p>
+<p class="text-3xl font-black mb-2">COP 3.000.000</p>
+<p class="text-indigo-400 mb-6">+ COP 800.000 / mes</p>
+<ul class="text-sm text-slate-400 space-y-2">
+<li>✔ WhatsApp automático</li>
+<li>✔ Flujos básicos</li>
+<li>✔ Soporte estándar</li>
+</ul>
+</div>
+
+<div class="glass p-10 rounded-3xl border-2 border-indigo-600">
+<h3 class="text-2xl font-bold mb-2">Professional</h3>
+<p class="text-slate-400 mb-6">Alto volumen</p>
+<p class="text-3xl font-black mb-2">COP 8.000.000</p>
+<p class="text-indigo-400 mb-6">+ COP 2.500.000 / mes</p>
+<ul class="text-sm text-slate-300 space-y-2">
+<li>✔ WhatsApp + Email</li>
+<li>✔ Reportes automáticos</li>
+<li>✔ Base de datos</li>
+<li>✔ Soporte prioritario</li>
+</ul>
+</div>
+
+<div class="glass p-10 rounded-3xl">
+<h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+<p class="text-slate-400 mb-6">A medida</p>
+<p class="text-3xl font-black mb-2">Desde 20M</p>
+<p class="text-indigo-400 mb-6">Mensual personalizado</p>
+<ul class="text-sm text-slate-400 space-y-2">
+<li>✔ Integraciones API</li>
+<li>✔ Servidor dedicado</li>
+<li>✔ SLA empresarial</li>
+</ul>
+</div>
+
+</div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="py-32 px-6">
-    <div class="max-w-3xl mx-auto glass p-12 rounded-[40px]">
-        <h2 class="text-4xl font-bold mb-6 text-center">
-            Hablemos por WhatsApp
-        </h2>
+<section id="contacto" class="py-24 px-6 bg-slate-900/30">
+<div class="max-w-4xl mx-auto glass p-12 rounded-3xl">
+<h2 class="text-4xl font-bold mb-6 text-center">Solicita tu diagnóstico gratuito</h2>
 
-        <form id="contact-form" class="space-y-6">
-            <input id="name" type="text" placeholder="Nombre completo" required
-                class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10">
+<form id="contact-form" class="space-y-6">
+<input id="name" required placeholder="Nombre completo" class="w-full p-4 rounded-xl bg-white/5">
+<input id="email" required placeholder="Email" class="w-full p-4 rounded-xl bg-white/5">
+<textarea id="message" rows="4" placeholder="Cuéntanos sobre tu negocio" class="w-full p-4 rounded-xl bg-white/5"></textarea>
+<button type="submit" class="w-full bg-indigo-600 py-4 rounded-xl font-bold">
+Enviar a WhatsApp
+</button>
+</form>
 
-            <input id="email" type="email" placeholder="Email" required
-                class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10">
-
-            <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu negocio"
-                class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10"></textarea>
-
-            <button type="submit"
-                class="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold text-lg">
-                Enviar a WhatsApp
-            </button>
-        </form>
-
-        <div class="mt-8 text-center text-indigo-400 font-bold">
-            <i class="fab fa-whatsapp"></i> +1 650 507 8293
-        </div>
-    </div>
+<p class="text-center mt-6 text-slate-400">
+📞 +1 650 507 8293
+</p>
+</div>
 </section>
 
-<!-- FOOTER -->
-<footer class="py-10 text-center text-slate-500">
-    © OMNIX · Barranquilla, Colombia
+<footer class="py-12 text-center text-slate-500">
+<img src="logo-omnix.png" class="h-10 mx-auto mb-4">
+© OMNIX · Barranquilla, Colombia
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init();
+AOS.init({once:true});
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById("contact-form").addEventListener("submit",function(e){
+e.preventDefault();
+const n=document.getElementById("name").value;
+const em=document.getElementById("email").value;
+const m=document.getElementById("message").value;
 
-    const nombre = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const mensaje = document.getElementById('message').value;
+const text=`Hola, quiero un diagnóstico OMNIX.
 
-    const texto = `Hola, quiero un diagnóstico OMNIX.
-
-Nombre: ${nombre}
-Email: ${email}
+Nombre: ${n}
+Email: ${em}
 Mensaje:
-${mensaje}`;
+${m}`;
 
-    const telefono = "16505078293";
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
-
-    window.open(url, '_blank');
+window.open("https://wa.me/16505078293?text="+encodeURIComponent(text),"_blank");
 });
 </script>
 
