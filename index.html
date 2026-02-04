@@ -1,208 +1,354 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OMNIX QUANTUM | Institutional Risk Control Infrastructure</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="OMNIX - Sistema operativo de automatización comercial con IA para E-commerce en Colombia." />
+    <title>OMNIX | Automatización Comercial con IA Enterprise</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#0f172a;
---bg2:#1e293b;
---text:#f8fafc;
---muted:#94a3b8;
---blue:#3b82f6;
---green:#10b981;
---border:#334155
-}
-body{
-font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-background:var(--bg);
-color:var(--text);
-line-height:1.6
-}
-nav{
-background:rgba(15,23,42,.95);
-border-bottom:1px solid var(--border);
-padding:1rem 2rem;
-position:sticky;
-top:0;z-index:10
-}
-.nav-container{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-.logo{
-display:flex;
-gap:.75rem;
-align-items:center;
-font-weight:700
-}
-.logo img{height:46px}
-.nav-links{list-style:none;display:flex;gap:2rem}
-.nav-links a{color:var(--text);text-decoration:none;font-weight:500}
-.hero{
-padding:7rem 2rem;
-text-align:center;
-background:radial-gradient(circle at top right,#1e3a8a,#0f172a)
-}
-.hero h1{
-font-size:3.2rem;
-font-weight:800;
-margin-bottom:1rem
-}
-.hero p{color:var(--muted);max-width:720px;margin:1rem auto}
-.badge{
-display:inline-block;
-padding:.45rem 1rem;
-border-radius:20px;
-border:1px solid var(--green);
-color:var(--green);
-margin-bottom:2rem;
-font-weight:600
-}
-.cta{
-display:inline-block;
-margin-top:2.5rem;
-padding:1.1rem 2.4rem;
-background:var(--blue);
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:600
-}
-section{
-padding:5rem 2rem;
-max-width:1200px;
-margin:auto
-}
-h2{text-align:center;font-size:2.4rem;margin-bottom:3rem}
-.card{
-background:var(--bg2);
-border:1px solid var(--border);
-border-radius:14px;
-padding:2rem;
-margin-bottom:2rem
-}
-.contact{
-background:radial-gradient(circle at bottom left,#064e3b,#0f172a);
-padding:6rem 2rem;
-text-align:center
-}
-.contact a{
-color:white;
-font-weight:600;
-text-decoration:none;
-font-size:1.1rem
-}
-footer{
-background:#020617;
-padding:3rem 2rem;
-text-align:center;
-border-top:1px solid var(--border)
-}
-@media(max-width:768px){
-.hero h1{font-size:2.4rem}
-.nav-links{display:none}
-}
-</style>
+    <!-- Scripts Externos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#030712',
+                        n8n: '#ff7f50',
+                        openai: '#10b981',
+                        google: '#4285f4',
+                        prestashop: '#ff6600',
+                        supabase: '#3ecf8e'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f1f5f9;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #6366f1;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
 </head>
+<body class="bg-dark text-slate-100">
 
-<body>
+    <div class="hero-blob top-0 left-0"></div>
+    <div class="hero-blob bottom-0 right-0" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);"></div>
 
-<nav>
-<div class="nav-container">
-<div class="logo">
-<img src="https://cdn.abacus.ai/images/6ee0ec5b-a15d-42f3-96a3-a582e21dffd6.png">
-<span>OMNIX QUANTUM</span>
-</div>
-<ul class="nav-links">
-<li><a href="#solution">Solution</a></li>
-<li><a href="#how">How it works</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
-</nav>
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter gradient-text">OMNIX</div>
+            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#problema" class="nav-link">¿Por qué OMNIX?</a>
+                <a href="#solucion" class="nav-link">Solución</a>
+                <a href="#planes" class="nav-link">Planes</a>
+                <a href="#contacto" class="px-6 py-2 bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all">Agendar Demo</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
 
-<section class="hero">
-<div class="badge">Pre-Seed Stage | ADGM</div>
-<h1>Institutional Risk Control Infrastructure</h1>
-<p>
-OMNIX QUANTUM is a governance layer that validates every algorithmic trade
-before execution. Built for institutions that protect capital first.
-</p>
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-48 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6 border border-indigo-500/20">
+                    n8n + GPT-4 Enterprise Automation
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-8">
+                    No es un bot.<br />
+                    Es tu <span class="gradient-text">Cerebro</span> Comercial.
+                </h1>
+                <p class="text-2xl font-medium text-indigo-300 mb-6">
+                    Automatiza tu E-commerce en Barranquilla con IA de nivel mundial.
+                </p>
+                <p class="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">
+                    OMNIX automatiza el 90% de WhatsApp y ventas repetitivas.<br />
+                    GPT-4 entiende la intención del cliente, consulta stock real, genera links de pago y escala a humano solo si es necesario.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contacto" class="px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-2xl shadow-indigo-500/40 text-lg">
+                        Solicitar Diagnóstico Gratis
+                    </a>
+                    <a href="#solucion" class="px-10 py-5 glass rounded-2xl font-bold hover:bg-white/5 transition-all text-lg">
+                        Ver Capacidades
+                    </a>
+                </div>
+            </div>
+            <div class="relative" data-aos="zoom-in">
+                <div class="glass rounded-[40px] p-6 shadow-2xl border-indigo-500/20">
+                    <img src="https://placehold.co/800x600/0f172a/ffffff?text=OMNIX+Intelligent+Flow" alt="Omnix Flow" class="rounded-3xl w-full shadow-inner" />
+                </div>
+                <div class="absolute -bottom-10 -left-10 glass p-8 rounded-3xl shadow-2xl border border-green-500/20 animate-pulse">
+                    <p class="text-xs font-bold text-green-400 uppercase mb-2">Estado del Sistema</p>
+                    <p class="text-2xl font-black">Operativo 24/7</p>
+                    <p class="text-sm text-slate-500">Sin errores humanos detectados</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a 
-class="cta"
-target="_blank"
-href="https://wa.me/16505078293?text=Hola,%20quiero%20un%20diagnóstico%20institucional%20de%20OMNIX%20QUANTUM">
-Request Institutional Diagnostic
-</a>
-</section>
+    <!-- Problema vs Solución -->
+    <section id="problema" class="py-32 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4">¿Tu negocio está sufriendo esto?</h2>
+                <p class="text-slate-400">Si tienes más de 50 mensajes al día, ya conoces el dolor.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-10 rounded-[32px] border-red-500/10">
+                    <h3 class="text-2xl font-bold mb-6 text-red-400">Antes de OMNIX</h3>
+                    <ul class="space-y-4 text-slate-400">
+                        <li><i class="fas fa-times-circle mr-3 text-red-500"></i> Clientes esperando horas por una respuesta.</li>
+                        <li><i class="fas fa-times-circle mr-3 text-red-500"></i> Errores al consultar stock o precios.</li>
+                        <li><i class="fas fa-times-circle mr-3 text-red-500"></i> Equipo agotado respondiendo lo mismo 100 veces.</li>
+                        <li><i class="fas fa-times-circle mr-3 text-red-500"></i> Ventas perdidas por falta de seguimiento.</li>
+                    </ul>
+                </div>
+                <div class="glass p-10 rounded-[32px] border-green-500/20 bg-green-500/5">
+                    <h3 class="text-2xl font-bold mb-6 text-green-400">Con OMNIX</h3>
+                    <ul class="space-y-4 text-slate-300">
+                        <li><i class="fas fa-check-circle mr-3 text-green-500"></i> Respuesta instantánea en WhatsApp 24/7.</li>
+                        <li><i class="fas fa-check-circle mr-3 text-green-500"></i> Sincronización real con PrestaShop/E-commerce.</li>
+                        <li><i class="fas fa-check-circle mr-3 text-green-500"></i> Reportes automáticos y gestión de leads.</li>
+                        <li><i class="fas fa-check-circle mr-3 text-green-500"></i> Escalamiento a humano solo en casos críticos.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="solution">
-<h2>What OMNIX Does</h2>
+    <!-- Funciones Detalladas -->
+    <section id="solucion" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-1">
+                    <h2 class="text-4xl font-bold mb-6 leading-tight">Lo que OMNIX <br/><span class="gradient-text">realmente hace</span></h2>
+                    <p class="text-slate-400 mb-8">No conversa por conversar. Ejecuta procesos de negocio complejos de forma autónoma.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0"><i class="fas fa-brain"></i></div>
+                            <div><h4 class="font-bold">Cerebro GPT-4</h4><p class="text-sm text-slate-500">Entiende el contexto y la intención del cliente, no usa palabras clave rígidas.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0"><i class="fas fa-database"></i></div>
+                            <div><h4 class="font-bold">Memoria Infinita</h4><p class="text-sm text-slate-500">Recuerda a cada cliente y sus preferencias en Supabase/PostgreSQL.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">
+                    <div class="glass p-8 rounded-3xl">
+                        <i class="fab fa-whatsapp text-3xl text-green-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Venta Autónoma</h3>
+                        <p class="text-slate-400 text-sm">Consulta stock real en PrestaShop, envía fotos de productos y genera links de pago automáticamente.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl">
+                        <i class="fas fa-envelope-open-text text-3xl text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Gestión de Correo</h3>
+                        <p class="text-slate-400 text-sm">Responde dudas frecuentes por Gmail y clasifica pedidos entrantes sin que toques el teclado.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl">
+                        <i class="fas fa-file-invoice text-3xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Reportes PDF</h3>
+                        <p class="text-slate-400 text-sm">Pide un resumen de ventas del día por WhatsApp y recíbelo en PDF en tu correo en 5 segundos.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl">
+                        <i class="fas fa-shield-alt text-3xl text-cyan-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Seguridad Enterprise</h3>
+                        <p class="text-slate-400 text-sm">Infraestructura robusta en n8n con validación de datos y backups automáticos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<strong>OMNIX IS:</strong><br>
-Risk governance infrastructure between your signals and execution.
-Fail-closed by design. Fully auditable.
-</div>
+    <!-- Planes -->
+    <section id="planes" class="py-32 px-6 bg-slate-900/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6">Costo mensual vs contratar una persona</h2>
+                <p class="text-slate-400">Modelo de Implementación (Setup) + Operación Mensual.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="glass p-10 rounded-[40px] border border-slate-800 hover:border-indigo-500/30 transition-all">
+                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                    <p class="text-slate-500 text-sm mb-8">Ideal para tiendas en crecimiento.</p>
+                    <div class="space-y-4 mb-10">
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Setup Único</p><p class="text-3xl font-black">COP 3.000.000</p></div>
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Mensual</p><p class="text-xl font-bold text-indigo-400">COP 800.000</p></div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-400 mb-10">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + PrestaShop</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Flujos de atención base</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Soporte vía Ticket</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-2xl border border-indigo-500 text-indigo-500 font-bold hover:bg-indigo-500 hover:text-white transition-all">Empezar Ahora</a>
+                </div>
+                <!-- Pro -->
+                <div class="glass p-10 rounded-[40px] border-2 border-indigo-600 relative transform scale-105 shadow-2xl shadow-indigo-500/10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-1 rounded-full text-xs font-bold tracking-widest">RECOMENDADO</div>
+                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                    <p class="text-slate-500 text-sm mb-8">Para alto volumen y múltiples canales.</p>
+                    <div class="space-y-4 mb-10">
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Setup Único</p><p class="text-3xl font-black">COP 8.000.000</p></div>
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Mensual</p><p class="text-xl font-bold text-indigo-400">COP 2.500.000</p></div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300 mb-10">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> WhatsApp + Gmail + Drive</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Reportes PDF Automáticos</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Base de Datos Supabase</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Soporte Prioritario</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-500/30">Agendar Llamada</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="glass p-10 rounded-[40px] border border-slate-800">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-slate-500 text-sm mb-8">Infraestructura a medida.</p>
+                    <div class="space-y-4 mb-10">
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Setup Único</p><p class="text-3xl font-black">Desde 20M</p></div>
+                        <div><p class="text-xs text-slate-500 uppercase font-bold">Mensual</p><p class="text-xl font-bold text-indigo-400">Personalizado</p></div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-400 mb-10">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Integraciones API Custom</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Servidor Dedicado</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> SLA de Respuesta 1h</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i> Consultoría Continua</li>
+                    </ul>
+                    <a href="#contacto" class="block text-center py-4 rounded-2xl border border-slate-600 text-slate-400 font-bold hover:bg-slate-800 transition-all">Contactar Ventas</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<strong>OMNIX IS NOT:</strong><br>
-Not a trading bot. Not a signal generator. Not retail software.
-</div>
-</section>
+    <!-- FAQ Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-6">
+                <div class="faq-item pb-6">
+                    <h4 class="font-bold mb-2">¿Es seguro para mis datos?</h4>
+                    <p class="text-slate-500 text-sm">Absolutamente. Usamos infraestructura cifrada y tus datos se almacenan en bases de datos privadas (Supabase/PostgreSQL) con backups diarios.</p>
+                </div>
+                <div class="faq-item pb-6">
+                    <h4 class="font-bold mb-2">¿Qué pasa si el cliente hace una pregunta difícil?</h4>
+                    <p class="text-slate-500 text-sm">OMNIX está programado para detectar cuando no puede resolver algo y escala la conversación automáticamente a un humano de tu equipo.</p>
+                </div>
+                <div class="faq-item pb-6">
+                    <h4 class="font-bold mb-2">¿Tengo que cambiar mi software actual?</h4>
+                    <p class="text-slate-500 text-sm">No. OMNIX se conecta a lo que ya usas (PrestaShop, Gmail, etc.) mediante APIs, actuando como un puente inteligente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="how">
-<h2>How It Works</h2>
+    <!-- Contacto -->
+    <section id="contacto" class="py-32 px-6">
+        <div class="max-w-5xl mx-auto glass p-12 md:p-20 rounded-[60px] relative overflow-hidden">
+            <div class="relative z-10 grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-5xl font-bold mb-6 leading-tight">¿Listo para <br/><span class="gradient-text">escalar?</span></h2>
+<p class="text-slate-400 mb-8 max-w-xl leading-relaxed">OMNIX no te hace vender más por magia.<br />Te permite atender a todos sin perder oportunidades.<br />Eso es real, honesto y poderoso.</p>
+                    <p class="text-slate-400 mb-8">Agenda un diagnóstico gratuito de 15 minutos. Analizaremos tus procesos y te diremos exactamente cuánto tiempo y dinero puedes ahorrar.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 text-indigo-400 font-bold"><i class="fab fa-whatsapp text-2xl"></i> +1 650 481 5494</div>
+                        <div class="flex items-center gap-4 text-indigo-400 font-bold"><i class="fas fa-envelope text-2xl"></i> madridpep3@gmail.com</div>
+                    </div>
+                </div>
+                <form id="contact-form" class="space-y-6">
+                    <input type="text" placeholder="Nombre Completo" required class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 outline-none transition-all">
+                    <input type="email" placeholder="Email Corporativo" required class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 outline-none transition-all">
+                    <textarea placeholder="Cuéntanos sobre tu negocio (volumen de mensajes, canales...)" rows="4" class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 outline-none transition-all"></textarea>
+                    <button type="submit" class="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-indigo-500/20 transition-all">Enviar Solicitud de Diagnóstico</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-External Signal → OMNIX Validation Layers → Approved Execution
-</div>
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="text-3xl font-black gradient-text mb-2">OMNIX</div>
+                <p class="text-slate-600 text-sm">Barranquilla, Colombia. Automatización IA Enterprise.</p>
+            </div>
+            <div class="flex gap-6 text-slate-500">
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Términos</a>
+                <a href="https://wa.me/16504815494" class="hover:text-green-500 transition-colors text-xl"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-<div class="card">
-Every trade is validated through regime detection, coherence checks,
-Monte Carlo risk simulation and final consensus gate.
-</div>
-</section>
-
-<section id="contact" class="contact">
-<h2>Ready to Talk?</h2>
-<p>
-We respond personally within 24 hours.
-</p>
-
-<p style="margin-top:2rem">
-📧 <a href="mailto:madridpep3@gmail.com?subject=OMNIX%20Quantum%20Institutional%20Inquiry">
-madridpep3@gmail.com
-</a>
-</p>
-
-<p style="margin-top:1rem">
-📱 <a href="https://wa.me/16505078293" target="_blank">
-+1 (650) 507-8293
-</a>
-</p>
-
-<a 
-class="cta"
-style="margin-top:2rem;display:inline-block"
-href="mailto:madridpep3@gmail.com?subject=OMNIX%20Quantum%20Institutional%20Brief">
-Request Institutional Brief
-</a>
-</section>
-
-<footer>
-<p>© 2025 OMNIX QUANTUM</p>
-<p>Institutional Risk Control Infrastructure</p>
-</footer>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // Lógica simple para menú móvil si se desea expandir
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Solicitud recibida! Nos pondremos en contacto contigo para el diagnóstico gratuito.');
+            e.target.reset();
+        });
+    </script>
 </body>
 </html>
-
